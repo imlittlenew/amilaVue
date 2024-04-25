@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <link href="img/logo.png" rel="shortcut icon" />
+    <title>AMILA</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/mycss.css" rel="stylesheet">
+    <link href="css/aos.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/vue@2"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="js/NavigationBar.js"></script>
+    <script src="js/aos.js"></script>
+    <script src="js/myjs.js"></script>
+    <script src="js/bootstrap.bundle.min.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <button @click="scrollToTop" id="backToTopBtn" title="回到頂部"></button>
+        <!-- 優惠訊息 -->
+        <nav class="navbar navbar-expand-lg bg-body-tertiary p-2" data-bs-theme="dark">
+            <div class="container text-center">
+                <div class="row mx-auto">
+                    <div class="col-12 ">
+                        <span class="navbar-brand mb-0 fs-6 text-light"><b>{{PromotionalMessage}}</b></span>
+                    </div>
+                </div>
+            </div>
+        </nav>
+        <!-- 導覽列 -->
+        <div id="navigation"></div>
+
+        <!-- Breadcrumb -->
+        <template>
+            <div class="container mt-5">
+                <div class="row">
+                    <div class="col-md-8">
+                        <nav aria-label="breadcrumb">
+                            <ol class="breadcrumb">
+                                <li class="breadcrumb-item"><a href="index.html" class="link-dark">首頁</a></li>
+                                <li class="breadcrumb-item active" aria-current="page">所有商品</li>
+                            </ol>
+                        </nav>
+                    </div>
+                    <div class="col-md-4 d-flex justify-content-end">
+                        <div class="dropdown">
+                            <select class="form-select form-select-md mb-3" aria-label=".form-select-lg example"
+                                v-model="selectedSort" @change="sortProducts">
+                                <option value="lowToHigh">價格低到高</option>
+                                <option value="highToLow">價格高到低</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </template>
+
+        <div class="alert cart-message" role="alert" v-show="showCartMessage">
+            <img src="img/bigcart.png" class="d-block img-fluid mx-auto" alt="cart">
+            商品已成功加入購物車！
+        </div>
+        <div class="container">
+            <!-- 品牌清單 -->
+            <div class="row">
+                <div class="col-md-3">
+                    <div class="list-group list-group-flush">
+                        <a v-bind:href="'moreson.html'" class="list-group-item list-group-item-action text-start">木入森</a>
+                        <a v-bind:href="'petstimes.html'" class="list-group-item list-group-item-action text-start">毛孩時代</a>
+                        <a v-bind:href="'dogcatstar.html'" class="list-group-item list-group-item-action text-start">汪喵星球</a>
+                        <a v-bind:href="'nu4pet.html'" class="list-group-item list-group-item-action text-start">陪心寵糧</a>
+                        <a v-bind:href="'natural10.html'" class="list-group-item list-group-item-action text-start">自然食</a>
+                        <a v-bind:href="'francodex.html'" class="list-group-item list-group-item-action text-start">法國法點</a>
+                    </div>
+                    <div class="list-group list-group-flush">
+                        <a class="list-group-item list-group-item-action text-start" data-bs-toggle="collapse"
+                            href="#multiCollapseExample1" role="button" aria-expanded="false"
+                            aria-controls="multiCollapseExample1">更多分類</a>
+                        <div class="collapse multi-collapse" id="multiCollapseExample1">
+                            <div class="card card-body no-border02">
+                                <a v-bind:href="'bonesAndMood.html'"
+                                    class="list-group-item list-group-item-action text-start">關節和情緒保健</a>
+                                <a v-bind:href="'bodyErelated.html'"
+                                    class="list-group-item list-group-item-action text-start">身體的相關保健</a>
+                                <a v-bind:href="'eyesAndSkin.html'"
+                                    class="list-group-item list-group-item-action text-start">眼睛和皮膚保健</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-9">
+                    <!-- 所有品牌商品 -->
+                    <template>
+                        <div class="row row-cols-1 row-cols-md-3 g-3">
+                          <div v-for="(item, index) in filteredProducts" :key="index" class="col">
+                            <div class="card h-100 border-0 shadow-sm p-2 mb-1 bg-body rounded">
+                              <img :src="item.image" class="card-img-top" :alt="item.name">
+                              <div class="card-body d-flex flex-column">
+                                <div class="flex-grow-1">
+                                  <p class="card-title" style="color: gray;">{{ item.name }}</p>
+                                  <p class="card-text"><b>NT$ {{ item.price }}</b></p>
+                                </div>
+                                <button type="button" class="btn btn-outline-dark mt-auto" data-bs-toggle="modal"
+                                        :data-bs-target="'#exampleModal_' + item.product_id">
+                                  立即購買
+                                </button>
+                                <div class="modal fade" :id="'exampleModal_' + item.product_id" tabindex="-1"
+                                     aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                  <div class="modal-dialog modal-dialog-centered">
+                                    <div class="modal-content">
+                                      <div class="modal-body">
+                                        <div class="container-fluid">
+                                          <div class="row">
+                                            <div class="col-md-6">
+                                              <img :src="item.image" class="img-fluid" />
+                                            </div>
+                                            <div class="col-md-6 ms-auto">
+                                              <div class="row mt-2">
+                                                <div class="col-12 fs-5 fw-bold ">{{ item.name }}</div>
+                                                <div class="col-12 mb-4 fs-5 fw-bold mt-3">NT$ {{ item.price }}</div>
+                                              </div>
+                                            </div>
+                                            <div class="row">
+                                              <div class="col-6 mt-4">
+                                                <div class="col-12 .fs-6 badge bg-secondary text-wrap ">
+                                                  全館滿$599免運
+                                                </div>
+                                              </div>
+                                              <div class="col-6">
+                                                <div class="col">
+                                                  <label for="quantity" class="me-2 text-secondary fs-6">購買數量</label>
+                                                  <form class="d-flex align-items-center" @submit.prevent="addToCart(item)">
+                                                    <div class="d-flex align-items-center">
+                                                      <button type="button" @click="decreaseQuantity(item)"
+                                                              class="me-2 btn btn-outline-dark">-</button>
+                                                      <input :id="'quantity' + item.product_id" :name="'quantity' + item.product_id"
+                                                             min="1" :value="item.quantity" class="form-control">
+                                                      <button type="button" @click="increaseQuantity(item)"
+                                                              class="ms-2 btn btn-outline-dark">+</button>
+                                                    </div>
+                                                  </form>
+                                                </div>
+                                              </div>
+                                            </div>
+                                          </div>
+                                        </div>
+                                      </div>
+                                      <div class="modal-footer">
+                                        <button type="button" class="btn btn-outline-secondary"
+                                                data-bs-dismiss="modal">取消</button>
+                                        <button type="button" class="btn btn-dark" @click="addToCart(item)">加入購物車</button>
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </template>
+                      
+    
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        new Vue({
+            el: '#app',
+            data() {
+                return {
+                    PromotionalMessage: '歡慶阿米拉品牌月！全館 $599 享免運！',
+                    showCartMessage: false,
+                    selectedSort: 'lowToHigh',
+                    searchTerm: localStorage.getItem('searchTerm') || '',
+                    products: [], // 所有商品列表
+                };
+            },
+            mounted() {
+                this.fetchProducts(); // 加載商品數據
+            },
+            computed: {
+                // 使用計算屬性監聽搜索關鍵字的變化，並更新過濾後的產品列表
+                filteredProducts() {
+                    const searchTerm = this.searchTerm.trim().toLowerCase();
+                    if (searchTerm === '') {
+                        return this.products; // 如果搜索關鍵字為空，返回所有產品
+                    } else {
+                        // 返回與搜索關鍵字匹配的產品
+                        return this.products.filter(product => {
+                            return product.name.toLowerCase().includes(searchTerm);
+                        });
+                    }
+                }
+            },
+            methods: {
+                fetchProducts() {
+                    // 使用 fetch 從後端獲取商品數據並將其賦值給 products
+                    fetch('json/allProduct.json') // 路徑根據你的項目結構和 JSON 文件位置而定
+                        .then(response => {
+                            if (!response.ok) {
+                                throw new Error('網絡響應失敗');
+                            }
+                            return response.json();
+                        })
+                        .then(data => {
+                            this.products = data;
+                        })
+                        .catch(error => {
+                            console.error('獲取產品時出錯:', error);
+                        });
+                },
+                scrollToTop() {
+                    // 捲動到頂部的方法
+                    window.scrollTo({
+                        top: 0,
+                        behavior: "smooth" // 使用平滑滾動效果
+                    });
+                },
+                sortProducts() {
+                    switch (this.selectedSort) {
+                        case "lowToHigh":
+                            this.sortProductsByPriceLowToHigh();
+                            break;
+                        case "highToLow":
+                            this.sortProductsByPriceHighToLow();
+                            break;
+                    }
+                },
+                sortProductsByPriceLowToHigh() {
+                    this.products.sort((a, b) => {
+                        const priceA = parseFloat(a.price);
+                        const priceB = parseFloat(b.price);
+                        return priceA - priceB;
+                    });
+                },
+                sortProductsByPriceHighToLow() {
+                    this.products.sort((a, b) => {
+                        const priceA = parseFloat(a.price);
+                        const priceB = parseFloat(b.price);
+                        return priceB - priceA;
+                    });
+                },
+            }
+        });
+    </script>
+
+    <script>
+        // 獲取 Vue 組件的容器元素
+        const navigationElement = document.getElementById('navigation');
+
+        // 創建 Vue 實例並掛載到容器元素上
+        new Vue({
+            render: h => h(NavigationBar)
+        }).$mount(navigationElement);
+    </script>
+
+</body>
+
+</html>

@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <link href="img/logo.png" rel="shortcut icon" />
+  <title>AMILA</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="css/bootstrap.min.css" rel="stylesheet">
+  <link href="css/aos.css" rel="stylesheet">
+  <link href="css/login-signup.css" rel="stylesheet">
+  <link href="css/mycss.css" rel="stylesheet">
+</head>
+
+<body>
+
+  <!-- 優惠訊息 -->
+  <nav class="navbar navbar-expand-lg bg-body-tertiary p-2" data-bs-theme="dark">
+    <div class="container text-center">
+      <div class="row mx-auto">
+        <div class="col-12 ">
+          <span class="navbar-brand mb-0 fs-6 text-light"><b>歡慶阿米拉品牌月！全館 $599
+              享免運！</b></span>
+
+        </div>
+      </div>
+      <!-- Content here -->
+    </div>
+  </nav>
+  <!-- 導覽列 -->
+  <nav class="navbar navbar-expand-lg navbar sticky-top shadow mt-0 mb-0  bg-body" style="background-color: white;">
+    <div class="container">
+      <a class="navbar-brand fs-5 fw-bold mt-1" href="index.html">
+        <img src="img/logo.png" alt="Logo" width="45" height="36" class="d-inline-block align-text-center ">AMILA</a>
+      <button class="navbar-toggler" style="padding: 0 10px 0 10px;" type="button" data-bs-toggle="collapse"
+        data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+        aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a class="nav-link  fw-bold fs-5" href="all_products.html">所有商品</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link fw-bold fs-5" href="knowledgepage01.html">毛孩保健知識</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link fw-bold fs-5" aria-current="page" href="aboutamila.html">關於阿米拉</a>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle fw-bold fs-5" role="button" data-bs-toggle="dropdown"
+              aria-expanded="false">
+              常見問題
+            </a>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item  fs-5" href="pq.html">商品問題</a></li>
+              <li><a class="dropdown-item  fs-5" href="returns.html">退換貨須知</a></li>
+              <li><a class="dropdown-item  fs-5" href="delivery.html">運送政策</a></li>
+            </ul>
+          </li>
+        </ul>
+        <form class="d-flex" role="search">
+          <a href="#" class="btn text-nowrap" onclick="toggleSearch()">
+              <img src="img/search.png" class="d-block img-fluid" alt="search">
+          </a>
+          <div class="search-overlay" id="searchOverlay"onclick="searchProducts()">
+              <div class="search-form search-form--full-screen" id="searchForm">
+                  <div class="search-container">
+                      <img src="img/bigsearch.png" class="search-icon" alt="search">
+                      <input type="text" id="searchInput" placeholder="Search..." class="search-input">
+                  </div>
+              </div>
+          </div>
+          
+          <a href="cart.html" class="btn text-nowrap" id="cartIconWrapper">
+              <img src="img/cart.png" class="d-block img-fluid" alt="cart">
+              <span class="badge bg-dark rounded-pill cart-badge-nav" id="cartBadge"></span>
+          </a>
+          <a href="user.html" class="btn text-nowrap"><img src="img/user.png" class="d-block img-fluid" alt="user"></a>
+      </form>
+
+      </div>
+  </nav>
+  <div id="loginSuccessAlert" style="display: none;">
+    <div class="d-flex align-items-center">
+      登入成功
+      <div class="spinner-grow spinner-grow-sm mx-2" role="status">
+        <div class="visually-hidden">Loading...</div>
+      </div>
+      <div class="spinner-grow spinner-grow-sm me-2" role="status">
+        <div class="visually-hidden">Loading...</div>
+      </div>
+      <div class="spinner-grow spinner-grow-sm" role="status">
+        <div class="visually-hidden">Loading...</div>
+      </div>
+    </div>
+  </div>
+  <div id="registerSuccessAlert" style="display: none;">
+    <div class="d-flex align-items-center">
+      註冊成功
+      <div class="spinner-grow spinner-grow-sm mx-2" role="status">
+        <div class="visually-hidden">Loading...</div>
+      </div>
+      <div class="spinner-grow spinner-grow-sm me-2" role="status">
+        <div class="visually-hidden">Loading...</div>
+      </div>
+      <div class="spinner-grow spinner-grow-sm" role="status">
+        <div class="visually-hidden">Loading...</div>
+      </div>
+    </div>
+  </div>
+  <div id="forgotPasswordSuccessAlert" style="display: none;">
+    <div class="d-flex align-items-center">
+      發送郵件成功
+      <div class="spinner-grow spinner-grow-sm mx-2" role="status">
+        <div class="visually-hidden">Loading...</div>
+      </div>
+      <div class="spinner-grow spinner-grow-sm me-2" role="status">
+        <div class="visually-hidden">Loading...</div>
+      </div>
+      <div class="spinner-grow spinner-grow-sm" role="status">
+        <div class="visually-hidden">Loading...</div>
+      </div>
+    </div>
+  </div>
+  <div class="row mb-5">
+    <div class="col-md-6 order-2 order-md-1">
+      <h1 class="text-center mt-5"><b>會員專區</b></h1>
+      <!-- 登入表單開始 -->
+      <main class="form-signin w-100 m-auto" id="loginForm">
+        <form id="loginFormElement">
+          <h1 class="h3 mb-3 fw-normal text-center">登入</h1>
+
+          <div class="form-floating">
+            <input type="email" class="form-control" id="loginEmail" placeholder="name@example.com" required>
+            <label for="loginEmail">Email address</label>
+          </div>
+          <div class="form-floating">
+            <input type="password" class="form-control" id="loginPassword" placeholder="Password" minlength="8"
+              required>
+            <label for="loginPassword">Password</label>
+          </div>
+
+          <div class="form-check text-start my-3 d-flex justify-content-between">
+            <label class="form-check-label" for="flexCheckDefault">
+              <input class="form-check-input me-2" type="checkbox" value="remember-me" id="flexCheckDefault">
+              <span>記住帳號</span>
+            </label>
+            <a class="text-end align-self-center dark-link" href="" id="toggleforgot">忘記密碼?</a>
+          </div>
+
+          <button class="btn btn-dark w-100 py-2 rounded-pill" type="submit">登入</button>
+          <p class="mt-5 mb-3 text-body-secondary text-center">沒有 AMILA 帳戶?<a href="" id="toggleRegister"
+              class="dark-link">免費註冊!</a></p>
+        </form>
+      </main>
+      <!-- 登入表單結束 -->
+      <!-- 註冊表單開始 -->
+      <main class="form-signin w-100 m-auto d-none" id="registerForm">
+        <form id="registerFormElement">
+          <h1 class="h3 mb-3 fw-normal text-center">註冊</h1>
+
+          <div class="form-floating">
+            <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com" required>
+            <label for="floatingInput">Email address</label>
+          </div>
+          <div class="form-floating">
+            <input type="password" class="form-control" id="floatingPassword" placeholder="Password" minlength="8"
+              required>
+            <label for="floatingPassword">Password</label>
+          </div>
+
+          <div class="form-check text-start my-3">
+            <input class="form-check-input" type="checkbox" value="remember-me" id="flexCheckDefault">
+            <label class="form-check-label" for="flexCheckDefault">
+              我想接收有關產品和促銷活動的最新資訊。
+            </label>
+          </div>
+          <button class="btn btn-dark w-100 py-2 rounded-pill" type="submit">建立帳戶</button>
+          <p class="mt-5 mb-3 text-body-secondary text-center">已經有帳戶?<a href="" id="toggleLogin"
+              class="dark-link">登入</a></p>
+        </form>
+      </main>
+      <!-- 註冊表單結束 -->
+      <!-- 忘記密碼開始  -->
+      <main class="form-signin w-100 m-auto d-none" id="forgotPasswordForm">
+        <form>
+          <h1 class="h3 mb-3 fw-normal text-center mb-5">忘記密碼?</h1>
+          <div class="form-floating">
+
+            <input type="email" class="form-control" id="forgotPasswordEmail" placeholder="請輸入使用者名稱或電子郵件地址" required>
+            <label for="forgotPasswordForm">請輸入電子郵件地址</label>
+          </div>
+          <button class="btn btn-dark w-100 py-2 mt-5 rounded-pill" type="submit">重新設定密碼</button>
+        </form>
+      </main>
+      <!-- 忘記密碼結束 -->
+    </div>
+    <div class="col-md-6 order-1 order-md-2">
+      <div ><img src="img/login-signup.png" class="bg-img"></a></div>
+    </div>
+  </div>
+  <!-- 我的頁尾開始 -->
+
+  <div class="mt-5 p-4 text-white text-center " style="background-image: url('img/footer.png');" data-bs-theme="dark">
+
+    <div class="container  mt-5">
+      <footer class="py-5 mt-5">
+        <div class="row  mt-5 ">
+
+          <div class="col-6  mb-3">
+            <ul class="nav flex-column">
+              <li class="nav-item mb-2 text-start">
+                <h5><b>聯絡我們</b></h5>
+              </li>
+              <br>
+              <li class="nav-item mb-2 text-start">
+                <h6>營業時間｜周一至周五 09：00-16：30</h6>
+              </li>
+              <li class="nav-item mb-2 text-start">
+                <h6>地址｜臺中市南屯區公益路二段51號(國泰公益大樓)</h6>
+              </li>
+              <li class="nav-item mb-2 text-start">
+                <h6>客服信箱｜amila@gmail.com</h6>
+              </li>
+              <li class="nav-item mb-2 text-start">
+                <h6>客服電話｜(04)2242-1717 #263</h6>
+              </li>
+
+            </ul>
+          </div>
+
+          <div class="col-md-6 ">
+            <form>
+              <div class="text-start">
+                <h5><b>訂閱電子報</b></h5>
+              </div>
+              <div class="input-group mb-3">
+                <label for="newsletter1" class="visually-hidden">訂閱電子報信箱</label>
+                <input type="text" class="form-control rounded-start" placeholder="訂閱電子報信箱"
+                  aria-label="Recipient's username" aria-describedby="button-addon2">
+                <button class="btn btn-outline-light " type="button" id="button-addon2">訂閱</button>
+              </div>
+              <div>
+                <ul class="list-unstyled d-flex">
+                  <li class="ms-0"><img src="img/JCB.png" class="img-fluid img-thumbnail" alt="..."></a></li>
+                  <li class="ms-0"><img src="img/VISA.png" class="img-fluid img-thumbnail" alt="..."></a></li>
+                  <li class="ms-0"><img src="img/MasterCard.png" class="img-fluid img-thumbnail" alt="..."></a></li>
+                </ul>
+              </div>
+            </form>
+          </div>
+
+        </div>
+
+        <div class="d-flex flex-column flex-sm-row justify-content-between py-4 my-4 border-top">
+          <p>&copy; 2023 阿米拉工作室股份有限公司</p>
+        </div>
+      </footer>
+
+    </div>
+    <!-- 我的頁尾結束 -->
+</body>
+<script>
+
+
+</script>
+<script src="js/aos.js"></script>
+<script src="js/myjs.js"></script>
+<script src="js/bootstrap.bundle.min.js"></script>
+
+</html>

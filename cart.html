@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <link href="img/logo.png" rel="shortcut icon" />
+    <title>AMILA</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/aos.css" rel="stylesheet">
+    <link href="css/mycss.css" rel="stylesheet">
+    <link href="css/cart.css" rel="stylesheet">
+
+</head>
+
+<body>
+    <!-- 優惠訊息 -->
+    <nav class="navbar navbar-expand-lg bg-body-tertiary p-2" data-bs-theme="dark">
+        <div class="container text-center">
+            <div class="row mx-auto">
+                <div class="col-12 ">
+                    <span class="navbar-brand mb-0 fs-6 text-light"><b>歡慶阿米拉品牌月！全館 $599
+                            享免運！</b></span>
+
+                </div>
+            </div>
+            <!-- Content here -->
+        </div>
+    </nav>
+    <!-- 導覽列 -->
+    <nav class="navbar navbar-expand-lg navbar sticky-top shadow mt-0 mb-0  bg-body mb-5"
+        style="background-color: white;">
+        <div class="container">
+            <a class="navbar-brand fs-5 fw-bold mt-1" href="index.html">
+                <img src="img/logo.png" alt="Logo" width="45" height="36"
+                    class="d-inline-block align-text-center ">AMILA</a>
+            <button class="navbar-toggler" style="padding: 0 10px 0 10px;" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link  fw-bold fs-5" href="all_products.html">所有商品</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link fw-bold fs-5" href="knowledgepage01.html">毛孩保健知識</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link fw-bold fs-5" aria-current="page" href="aboutamila.html">關於阿米拉</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle fw-bold fs-5" role="button" data-bs-toggle="dropdown"
+                            aria-expanded="false">
+                            常見問題
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item  fs-5" href="pq.html">商品問題</a></li>
+                            <li><a class="dropdown-item  fs-5" href="returns.html">退換貨須知</a></li>
+                            <li><a class="dropdown-item  fs-5" href="delivery.html">運送政策</a></li>
+                        </ul>
+                    </li>
+                </ul>
+                <form class="d-flex" role="search">
+                    <a href="#" class="btn text-nowrap" onclick="toggleSearch()">
+                        <img src="img/search.png" class="d-block img-fluid" alt="search">
+                    </a>
+                    <div class="search-overlay" id="searchOverlay"onclick="searchProducts()">
+                        <div class="search-form search-form--full-screen" id="searchForm">
+                            <div class="search-container">
+                                <img src="img/bigsearch.png" class="search-icon" alt="search">
+                                <input type="text" id="searchInput" placeholder="Search..." class="search-input">
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <a href="cart.html" class="btn text-nowrap" id="cartIconWrapper">
+                        <img src="img/cart.png" class="d-block img-fluid" alt="cart">
+                        <span class="badge bg-dark rounded-pill cart-badge-nav" id="cartBadge"></span>
+                    </a>
+                    <a href="user.html" class="btn text-nowrap"><img src="img/user.png" class="d-block img-fluid" alt="user"></a>
+                </form>
+
+            </div>
+    </nav>
+    <div id="cartSuccessAlert" style="display: none;">
+        <div class="d-flex align-items-center">
+            下單成功
+            <div class="spinner-grow spinner-grow-sm mx-2" role="status">
+                <div class="visually-hidden">Loading...</div>
+            </div>
+            <div class="spinner-grow spinner-grow-sm me-2" role="status">
+                <div class="visually-hidden">Loading...</div>
+            </div>
+            <div class="spinner-grow spinner-grow-sm" role="status">
+                <div class="visually-hidden">Loading...</div>
+            </div>
+        </div>
+    </div>
+    <div id="cartfailAlert" style="display: none;">
+        <div class="d-flex align-items-center">
+            請填寫完整表單!!!
+        </div>
+    </div>
+    <div class="container">
+        <form id="cartForm" class="needs-validation" novalidate>
+            <div class="row g-5">
+                <div class="col-md-5 col-lg-4 order-md-last">
+                    <h4 class="d-flex justify-content-between align-items-center mb-3">
+                        <span><b>您的購物車</b></span>
+                        <span class="badge bg-dark rounded-pill cart-badge-form"></span>
+                    </h4>
+                    <ul class="list-group mb-3" id="cartList" onclick="displayCartItem()">
+                        <li class="list-group-item d-flex justify-content-between lh-sm" data-product-id="1"
+                            data-product-name="商品名稱" data-product-price="12">
+                            <div>
+                                <h6 class="my-0"></h6>
+                            </div>
+                            <span class="text-body-secondary">$12</span>
+                        </li>
+
+                        <li class="list-group-item d-flex justify-content-between">
+                            <span>總額 (NT)</span>
+                            <strong>$35</strong>
+                        </li>
+                    </ul>
+
+                    <hr>
+                    <div class="input-group">
+                        <input type="text" class="form-control" placeholder="促銷代碼">
+                        <button type="submit" class="btn btn-dark">輸入</button>
+                    </div>
+                    <button id="confirmOrderButton" class="w-100 btn btn-dark btn-lg mt-4 rounded-pill"
+                        type="submit">確認下單</button>
+
+                </div>
+                <div class="col-md-7 col-lg-8">
+                    <h4 class="mb-3"><b>選擇送貨及付款方式</b></h4>
+                    <div class="row g-3">
+                        <div class="col-sm-6">
+                            <label for="firstName" class="form-label">收件人名稱</label>
+                            <input type="text" class="form-control" id="firstName" placeholder="" value="" required>
+                            <div class="invalid-feedback">
+                                請填入收件人真實姓名，以確保順利收件
+                            </div>
+                        </div>
+
+                        <div class="col-sm-6">
+                            <label for="lastName" class="form-label">收件人電話號碼</label>
+                            <input type="text" class="form-control" id="lastName" placeholder="" value="" required>
+                            <div class="invalid-feedback">
+                                請輸入正確的電話。
+                            </div>
+                        </div>
+                        <div class="col-12">
+                            <label for="email" class="form-label">電子郵件</label>
+                            <input type="email" class="form-control" id="email" placeholder="you@example.com" required>
+                            <div class="invalid-feedback">
+                                請輸入有效的電子郵件地址以獲取運送更新資訊。
+                            </div>
+                        </div>
+                        <div class="col-12">
+                            <label for="address" class="form-label mt-5">
+                                <h4><b>帳單地址</b></h4>
+                            </label>
+                            <input type="text" class="form-control" id="address" placeholder="街道地址" required>
+                            <div class="invalid-feedback">
+                                請輸入您的運送地址。
+                            </div>
+                        </div>
+
+                        <div class="col-md-5">
+                            <label for="country" class="form-label">國家</label>
+                            <select class="form-select" id="country" required>
+                                <option value="">選擇...</option>
+                                <option>台灣</option>
+                            </select>
+                            <div class="invalid-feedback">
+                                請選擇一個有效的國家。
+                            </div>
+                        </div>
+
+                        <div class="col-md-4">
+                            <label for="state" class="form-label">地區</label>
+                            <select class="form-select" id="state" required>
+                                <option value="">選擇...</option>
+                                <option>台北</option>
+                                <option>台中</option>
+                                <option>台南</option>
+                            </select>
+                            <div class="invalid-feedback">
+                                請提供有效的地區。
+                            </div>
+                        </div>
+
+                        <div class="col-md-3">
+                            <label for="zip" class="form-label">郵遞區號</label>
+                            <input type="text" class="form-control" id="zip" placeholder="" required>
+                            <div class="invalid-feedback">
+                                請提供有效的郵遞區號。
+                            </div>
+                        </div>
+                    </div>
+
+                    <h4 class="mb-3 mt-5"><b>支付</b></h4>
+
+                    <div class="my-3">
+                        <div class="form-check">
+                            <input id="credit" name="paymentMethod" type="radio" class="form-check-input custom-input"
+                                checked required>
+                            <label class="form-check-label d-flex align-items-center" for="credit">信用卡或金融卡
+                                <span class="ms-auto d-flex">
+                                    <img src="img/VISA.png" class="cardpay img-thumbnail">
+                                    <img src="img/JCB.png" class="cardpay img-thumbnail">
+                                    <img src="img/MasterCard.png" class="cardpay img-thumbnail">
+                                </span>
+                            </label>
+                        </div>
+                        <div class="form-check">
+                            <input id="paypal" name="paymentMethod" type="radio" class="form-check-input custom-input"
+                                required>
+                            <label class="form-check-label" for="paypal">貨到付款</label>
+                        </div>
+                    </div>
+
+                    <div class="row gy-3">
+                        <div class="col-md-6 credit-card-details">
+                            <label for="cc-name" class="form-label">卡片上的名字</label>
+                            <input type="text" class="form-control" id="cc-name" placeholder="" required>
+                            <small class="text-body-secondary">卡片上顯示的全名</small>
+                            <div class="invalid-feedback">
+                                卡片上姓名為必填項。
+                            </div>
+                        </div>
+
+                        <div class="col-md-6 credit-card-details">
+                            <label for="cc-number" class="form-label">信用卡號碼</label>
+                            <input type="text" class="form-control" id="cc-number" placeholder="" required>
+                            <div class="invalid-feedback">
+                                需要有效的信用卡號碼。
+                            </div>
+                        </div>
+
+                        <div class="col-md-3 credit-card-details">
+                            <label for="cc-expiration" class="form-label">到期日</label>
+                            <input type="text" class="form-control" id="cc-expiration" placeholder="" required>
+                            <div class="invalid-feedback">
+                                需要有效期限。
+                            </div>
+                        </div>
+
+                        <div class="col-md-3 credit-card-details">
+                            <label for="cc-cvv" class="form-label">CVV</label>
+                            <input type="text" class="form-control" id="cc-cvv" placeholder="" required>
+                            <div class="invalid-feedback">
+                                需要有效安全碼。
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+    <!-- 我的頁尾開始 -->
+    <div class="b-example-divider"></div>
+    <div class="mt-5 p-4 text-white text-center " style="background-image: url('img/footer.png');" data-bs-theme="dark">
+
+        <div class="container  mt-5">
+            <footer class="py-5 mt-5">
+                <div class="row  mt-5 ">
+
+                    <div class="col-6  mb-3">
+                        <ul class="nav flex-column">
+                            <li class="nav-item mb-2 text-start">
+                                <h5><b>聯絡我們</b></h5>
+                            </li>
+                            <br>
+                            <li class="nav-item mb-2 text-start">
+                                <h6>營業時間｜周一至周五 09：00-16：30</h6>
+                            </li>
+                            <li class="nav-item mb-2 text-start">
+                                <h6>地址｜臺中市南屯區公益路二段51號(國泰公益大樓)</h6>
+                            </li>
+                            <li class="nav-item mb-2 text-start">
+                                <h6>客服信箱｜amila@gmail.com</h6>
+                            </li>
+                            <li class="nav-item mb-2 text-start">
+                                <h6>客服電話｜(04)2242-1717 #263</h6>
+                            </li>
+
+                        </ul>
+                    </div>
+
+                    <div class="col-md-6 ">
+                        <form>
+                            <div class="text-start">
+                                <h5><b>訂閱電子報</b></h5>
+                            </div>
+                            <div class="input-group mb-3">
+                                <label for="newsletter1" class="visually-hidden">訂閱電子報信箱</label>
+                                <input type="text" class="form-control rounded-start" placeholder="訂閱電子報信箱"
+                                    aria-label="Recipient's username" aria-describedby="button-addon2">
+                                <button class="btn btn-outline-light " type="button" id="button-addon2">訂閱</button>
+                            </div>
+                            <div>
+                                <ul class="list-unstyled d-flex">
+                                    <li class="ms-0"><img src="img/JCB.png" class="img-fluid img-thumbnail"
+                                            alt="..."></a></li>
+                                    <li class="ms-0"><img src="img/VISA.png" class="img-fluid img-thumbnail"
+                                            alt="..."></a></li>
+                                    <li class="ms-0"><img src="img/MasterCard.png" class="img-fluid img-thumbnail"
+                                            alt="..."></a></li>
+                                </ul>
+                            </div>
+                        </form>
+                    </div>
+
+                </div>
+
+                <div class="d-flex flex-column flex-sm-row justify-content-between py-4 my-4 border-top">
+                    <p>&copy; 2023 阿米拉工作室股份有限公司</p>
+                </div>
+            </footer>
+        </div>
+        <!-- 我的頁尾結束 -->
+</body>
+<script src="js/aos.js"></script>
+<script src="js/myjs.js"></script>
+<script src="js/bootstrap.bundle.min.js"></script>
+
+</html>

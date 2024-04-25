@@ -1,0 +1,476 @@
+[
+    {
+      "product_id": 1,
+      "brand_id": 4,
+      "name": "食補鮮三精 (三種口味)",
+      "price": 650,
+      "image": "img/nu4pet01.png",
+      "quantity": 1
+    },
+    {
+      "product_id": 2,
+      "brand_id": 4,
+      "bodyanderelated_id": 1,
+      "name": "Plus+機能保健系列 泌尿道紓壓保健",
+      "price": 450,
+      "image": "img/nu4pet02.png",
+      "quantity": 1
+    },
+    {
+      "product_id": 3,
+      "brand_id": 2,
+      "bodyanderelated_id": 1,
+      "name": "心臟專科保健粉",
+      "price": 720,
+      "image": "img/petstimes01.png",
+      "quantity": 1
+    },
+    {
+      "product_id": 4,
+      "brand_id": 3,
+      "bodyanderelated_id": 1,
+      "name": "寵物益生菌 - 體態管理",
+      "price": 650,
+      "image": "img/dogcatstar01.png",
+      "quantity": 1
+    },
+    {
+      "product_id": 5,
+      "brand_id": 4,
+      "bodyanderelated_id": 1,
+      "name": "Plus+機能保健系列 優腎君腎臟保健",
+      "price": 730,
+      "image": "img/nu4pet03.png",
+      "quantity": 1
+    },
+    {
+      "product_id": 6,
+      "brand_id": 4,
+      "bodyanderelated_id": 1,
+      "name": "Plus+機能保健系列 小心肝肝臟保健",
+      "price": 620,
+      "image": "img/nu4pet04.png",
+      "quantity": 1
+    },
+    {
+      "product_id": 7,
+      "brand_id": 2,
+      "name": "95%頂級深海魚油",
+      "price": 790,
+      "image": "img/petstimes02.png",
+      "quantity": 1
+    },
+    {
+      "product_id": 8,
+      "brand_id": 1,
+      "name": "犬寶變不臭(益生菌)",
+      "price": 550,
+      "image": "img/moreson01.png",
+      "quantity": 1
+    },
+    {
+      "product_id": 9,
+      "brand_id": 1,
+      "bonesandmood_id": 1,
+      "name": "犬寶有關膝 (關節保健)",
+      "price": 920,
+      "image": "img/moreson02.png",
+      "quantity": 1
+    },
+    {
+      "product_id": 10,
+      "brand_id": 1,
+      "name": "犬寶珍心動",
+      "price": 720,
+      "image": "img/moreson03.png",
+      "quantity": 1
+    },
+    {
+      "product_id": 11,
+      "brand_id": 1,
+      "name": "犬寶D藻鈣 - 30入",
+      "price": 350,
+      "image": "img/moreson04.png",
+      "quantity": 1
+    },
+    {
+      "product_id": 12,
+      "brand_id": 1,
+      "bodyanderelated_id": 1,
+      "name": "犬寶痕淨白",
+      "price": 520,
+      "image": "img/moreson05.png",
+      "quantity": 1
+    },
+    {
+        "product_id": 13,
+        "brand_id": 4,
+        "eyesandskin_id": 1,
+        "name": "Plus+機能保健系列 眼睛保健葉黃素",
+        "price": 420,
+        "image": "img/nu4pet05.png",
+        "quantity": 1
+      },
+      {
+        "product_id": 14,
+        "brand_id": 2,
+        "name": "腎臟專科保健粉",
+        "price": 690,
+        "image": "img/petstimes03.png",
+        "quantity": 1
+      },
+      {
+        "product_id": 15,
+        "brand_id": 3,
+        "name": "軟便剋星保養粉",
+        "price": 380,
+        "image": "img/dogcatstar02.png",
+        "quantity": 1
+      },
+      {
+        "product_id": 16,
+        "brand_id": 3,
+        "bodyanderelated_id": 1,
+        "name": "Omega-3 全保養魚油 - 噴霧型",
+        "price": 450,
+        "image": "img/dogcatstar03.png",
+        "quantity": 1
+      },
+      {
+        "product_id": 17,
+        "brand_id": 3,
+        "name": "寵物腸胃益生菌",
+        "price": 650,
+        "image": "img/dogcatstar04.png",
+        "quantity": 1
+      },
+      {
+        "product_id": 18,
+        "brand_id": 3,
+        "name": "寵物皮膚益生菌",
+        "price": 650,
+        "image": "img/dogcatstar05.png",
+        "quantity": 1
+      },
+      {
+        "product_id": 19,
+        "brand_id": 4,
+        "name": "Plus+機能保健系列 腸胃保健益生菌",
+        "price": 599,
+        "image": "img/nu4pet06.png",
+        "quantity": 1
+      },
+      {
+        "product_id": 20,
+        "brand_id": 4,
+        "name": "Plus+機能保健系列 3C極淨魚油",
+        "price": 580,
+        "image": "img/nu4pet07.png",
+        "quantity": 1
+      },
+      {
+        "product_id": 21,
+        "brand_id": 4,
+        "name": "Plus+功能型機能粉 腸道保健",
+        "price": 699,
+        "image": "img/nu4pet08.png",
+        "quantity": 1
+      },
+      {
+        "product_id": 22,
+        "brand_id": 4,
+        "name": "Plus+功能型機能粉 皮毛保健",
+        "price": 699,
+        "image": "img/nu4pet09.png",
+        "quantity": 1
+      },
+      {
+        "product_id": 23,
+        "brand_id": 4,
+        "bonesandmood_id": 1,
+        "name": "Plus+功能型機能粉 關節保健",
+        "price": 699,
+        "image": "img/nu4pet10.png",
+        "quantity": 1
+      },
+      {
+        "product_id": 24,
+        "brand_id": 4,
+        "name": "Plus+機能保健系列 鱉蛋爆毛粉",
+        "price": 490,
+        "image": "img/nu4pet11.png",
+        "quantity": 1
+      },
+      {
+        "product_id": 25,
+        "brand_id": 4,
+        "name": "Plus+功能型機能粉 增強免疫力 (兩種口味)",
+        "price": 720,
+        "image": "img/nu4pet12.png",
+        "quantity": 1
+      },
+      {
+        "product_id": 26,
+        "brand_id": 2,
+        "bonesandmood_id": 1,
+        "name": "情緒穩定保養粉",
+        "price": 520,
+        "image": "img/petstimes04.png",
+        "quantity": 1
+      },
+      {
+        "product_id": 27,
+        "brand_id": 2,
+        "name": "免疫力平衡保健粉",
+        "price": 750,
+        "image": "img/petstimes05.png",
+        "quantity": 1
+      },
+      {
+        "product_id": 28,
+        "brand_id": 2,
+        "eyesandskin_id": 1,
+        "name": "8合1游離型葉黃素",
+        "price": 720,
+        "image": "img/petstimes06.png",
+        "quantity": 1
+      },
+      {
+        "product_id": 29,
+        "brand_id": 2,
+        "name": "泌尿道保健粉",
+        "price": 590,
+        "image": "img/petstimes07.png",
+        "quantity": 1
+      },
+      {
+        "product_id": 30,
+        "brand_id": 2,
+        "eyesandskin_id": 1,
+        "name": "皮膚專科益生菌",
+        "price": 650,
+        "image": "img/petstimes08.png",
+        "quantity": 1
+      },
+      {
+        "product_id": 31,
+        "brand_id": 2,
+        "name": "腸胃專科益生菌",
+        "price": 620,
+        "image": "img/petstimes09.png",
+        "quantity": 1
+      },
+      {
+        "product_id": 32,
+        "brand_id": 2,
+        "name": "6合1專利化毛粉",
+        "price": 380,
+        "image": "img/petstimes10.png",
+        "quantity": 1
+      },
+      {
+        "product_id": 33,
+        "brand_id": 6,
+        "bonesandmood_id": 1,
+        "name": "禪靜抗焦慮 - 口服液",
+        "price": 650,
+        "image": "img/francodex01.png",
+        "quantity": 1
+      },
+      {
+        "product_id": 34,
+        "brand_id": 3,
+        "eyesandskin_id": 1,
+        "name": "護眼好明亮保養粉",
+        "price": 660,
+        "image": "img/dogcatstar06.png",
+        "quantity": 1
+      },
+      {
+        "product_id": 35,
+        "brand_id": 3,
+        "name": "TAURINE 牛磺酸",
+        "price": 320,
+        "image": "img/dogcatstar07.png",
+        "quantity": 1
+      },
+      {
+        "product_id": 36,
+        "brand_id": 3,
+        "bodyanderelated_id": 1,
+        "name": "泌尿道健康保養粉",
+        "price": 650,
+        "image": "img/dogcatstar08.png",
+        "quantity": 1
+      },
+      {
+        "product_id": 37,
+        "brand_id": 3,
+        "bodyanderelated_id": 1,
+        "name": "免疫力提升保養粉",
+        "price": 880,
+        "image": "img/dogcatstar09.png",
+        "quantity": 1
+      },
+      {
+        "product_id": 38,
+        "brand_id": 3,
+        "bonesandmood_id": 1,
+        "name": "情緒好放鬆保養粉",
+        "price": 480,
+        "image": "img/dogcatstar10.png",
+        "quantity": 1
+      },
+      {
+        "product_id": 39,
+        "brand_id": 3,
+        "name": "85% Omega-3 機能魚油",
+        "price": 790,
+        "image": "img/dogcatstar11.png",
+        "quantity": 1
+      },
+      {
+        "product_id": 40,
+        "brand_id": 3,
+        "name": "紓壓胺基酸保養粉",
+        "price": 450,
+        "image": "img/dogcatstar12.png",
+        "quantity": 1
+      },
+      {
+        "product_id": 41,
+        "brand_id": 3,
+        "eyesandskin_id": 1,
+        "name": "亮毛護膚鱉蛋粉",
+        "price": 380,
+        "image": "img/dogcatstar13.png",
+        "quantity": 1
+      },
+      {
+        "product_id": 42,
+        "brand_id": 5,
+        "name": "寵立善保健品 - Q10護心活氧複方膠囊",
+        "price": 900,
+        "image": "img/natural1001.png",
+        "quantity": 1
+      },
+      {
+        "product_id": 43,
+        "brand_id": 5,
+        "name": "寵立善保健品 - 綜合完整型營養粉",
+        "price": 810,
+        "image": "img/natural1002.png",
+        "quantity": 1
+      },
+      {
+        "product_id": 44,
+        "brand_id": 5,
+        "eyesandskin_id": 1,
+        "name": "寵立善保健品 - 皮膚毛髮保健",
+        "price": 900,
+        "image": "img/natural1003.png",
+        "quantity": 1
+      },
+      {
+        "product_id": 45,
+        "brand_id": 5,
+        "name": "寵立善保健品 - UC-II 全方位關節保養粉",
+        "price": 900,
+        "image": "img/natural1004.png",
+        "quantity": 1
+      },
+      {
+        "product_id": 46,
+        "brand_id": 5,
+        "eyesandskin_id": 1,
+        "name": "寵立善保健品 - rTG 超級魚油",
+        "price": 495,
+        "image": "img/natural1005.png",
+        "quantity": 1
+      },
+      {
+        "product_id": 47,
+        "brand_id": 5,
+        "eyesandskin_id": 1,
+        "name": "寵立善保健品 - 抗氧護眼葉黃素",
+        "price": 720,
+        "image": "img/natural1006.png",
+        "quantity": 1
+      },
+      {
+        "product_id": 48,
+        "brand_id": 5,
+        "name": "寵立善保健品 - 完整型益生菌",
+        "price": 630,
+        "image": "img/natural1007.png",
+        "quantity": 1
+      },
+      {
+        "product_id": 49,
+        "brand_id": 6,
+        "name": "酵母鋅爆毛錠",
+        "price": 600,
+        "image": "img/francodex02.png",
+        "quantity": 1
+      },
+      {
+        "product_id": 50,
+        "brand_id": 6,
+        "name": "高單位深海魚油膠囊",
+        "price": 780,
+        "image": "img/francodex03.png",
+        "quantity": 1
+      },
+      {
+        "product_id": 51,
+        "brand_id": 6,
+        "bonesandmood_id": 1,
+        "name": "關節軟骨靈活錠",
+        "price": 780,
+        "image": "img/francodex04.png",
+        "quantity": 1
+      },
+      {
+        "product_id": 52,
+        "brand_id": 1,
+        "name": "犬寶固齒麗口滴劑 - 30ml",
+        "price": 330,
+        "image": "img/moreson09.png",
+        "quantity": 1
+      },
+      {
+        "product_id": 53,
+        "brand_id": 2,
+        "name": "腎臟專科保健粉",
+        "price": 690,
+        "image": "img/petstimes03.png",
+        "quantity": 1
+      },
+      {
+        "product_id": 54,
+        "brand_id": 1,
+        "name": "犬寶膚立好",
+        "price": 920,
+        "image": "img/moreson06.png",
+        "quantity": 1
+      },
+      {
+        "product_id": 55,
+        "brand_id": 1,
+        "eyesandskin_id": 1,
+        "name": "犬寶好眼力 (葉黃素)",
+        "price": 1280,
+        "image": "img/moreson07.png",
+        "quantity": 1
+      },
+      {
+        "product_id": 56,
+        "brand_id": 1,
+        "name": "寵物魚油粉",
+        "price": 820,
+        "image": "img/moreson08.png",
+        "quantity": 1
+      }
+
+  ]
+  

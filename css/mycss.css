@@ -1,0 +1,342 @@
+/* my.css */
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+TC&display=swap');
+
+/* 其他样式 */
+* {
+  font-family: 'Noto Sans TC', sans-serif; /* 使用 Noto Sans TC 字体 */
+}
+
+/* 分頁 (Pagination)的CSS開始 */
+.pagination {
+    border: none;
+}
+
+.page-link {
+    border: none;
+}
+
+.page-item.disabled .page-link {
+    border: none;
+}
+
+.pagination .page-link {
+    text-decoration: none;
+    /* 移除默认下划线 */
+    color: black;
+    /* 设置链接文本颜色为黑色 */
+}
+
+.pagination .page-link:hover {
+    text-decoration: underline;
+    /* 悬停时添加下划线 */
+    background-color: white;
+    /* 设置鼠标悬停时的链接文本颜色为白色 */
+}
+
+.pagination .page-link {
+    text-decoration: none;
+    color: black;
+    background-color: white;
+    /* 设置链接背景为白色 */
+}
+
+.pagination .page-link:hover {
+    text-decoration: underline;
+    color: lightblue;
+}
+
+.pagination .page-item.disabled .page-link {
+    pointer-events: none;
+    /* 禁用点击事件 */
+    color: gray;
+    /* 设置禁用状态下的链接文本颜色为灰色 */
+    background-color: white;
+    /* 设置禁用状态下的链接背景颜色为白色 */
+}
+
+/* 分頁 (Pagination)的CSS結束 */
+
+/* Breadcrumb 開始*/
+ol.breadcrumb a {
+    text-decoration: none;
+}
+
+.list-group-item {
+    border: none;
+    /* 移除所有邊框 */
+}
+
+/* Breadcrumb 結束*/
+
+/* pq的card只留下底線邊框開始 */
+.no-border {
+    border: none;
+    border-bottom: 1px solid #dee2e6;
+    /* 添加底部边框 */
+}
+.no-border02 {
+    border: none;
+}
+/* pq的card只留下底線邊框結束 */
+
+#ad {
+  font-family: 'Raleway', Arial, sans-serif;
+  position: relative;
+  overflow: hidden;
+  margin: 10px;
+
+  width: 100%;
+  color: #ffffff;
+  text-align: center;
+  -webkit-perspective: 50em;
+  perspective: 50em;
+}
+#ad * {
+  -webkit-box-sizing: padding-box;
+  box-sizing: padding-box;
+  -webkit-transition: all 0.2s ease-out;
+  transition: all 0.2s ease-out;
+}
+#ad img {
+  max-width: 100%;
+  vertical-align: top;
+}
+#ad div {
+  top: 50%;
+  left: 20px;
+  right: 20px;
+  position: absolute;
+  opacity: 0;
+  z-index: 1;
+}
+#ad h2,
+#ad h4 {
+  margin: 0;
+}
+#ad h2 {
+  font-weight: 600;
+}
+#ad h4 {
+  font-weight: 400;
+  text-transform: uppercase;
+}
+#ad i {
+  font-size: 32px;
+}
+#ad:after {
+  background-color:rgba(51, 51, 51, 0.9);
+  position: absolute;
+  content: "";
+  display: block;
+  top: 30px;
+  left: 40px;
+  right: 40px;
+  bottom: 30px;
+  -webkit-transition: all 0.4s ease-in-out;
+  transition: all 0.4s ease-in-out;
+  -webkit-transform: rotateX(-90deg);
+  transform: rotateX(-90deg);
+  -webkit-transform-origin: 50% 50%;
+  -ms-transform-origin: 50% 50%;
+  transform-origin: 50% 50%;
+  opacity: 0;
+}
+#ad a {
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  position: absolute;
+  z-index: 1;
+}
+#ad:hover div,
+#ad.hover div {
+  -webkit-transform: translateY(-50%);
+  transform: translateY(-50%);
+  opacity: 1;
+  -webkit-transition-delay: 0.2s;
+  transition-delay: 0.2s;
+}
+#ad:hover:after,
+#ad.hover:after {
+  -webkit-transform: rotateX(0);
+  transform: rotateX(0);
+  opacity: 0.9;
+}
+
+#modalPrice {
+ color: #dc3545;
+}
+
+.cart-message {
+  /* 自訂成功訊息的樣式 */
+        color: #FFFFFF;
+        position: fixed;
+        font-weight: bolder;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        background: #000000c2;
+        padding: 20px;
+        z-index: 9999;
+        /* border: 5px solid rgb(232, 20, 20); */
+        border-radius: 20px;
+        font-size: 20px;
+      }
+
+.t1{
+  font-size: 500%;
+}
+
+
+#backToTopBtn {
+  display: block; /* 初始顯示按鈕 */
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 99;
+  cursor: pointer;
+  width: 50px;
+  height: 50px;
+  border: 0;
+  background-color: transparent;
+  transition: opacity 1.0s ease; /* 添加淡入淡出效果 */
+  opacity: 0; /* 初始設置為完全透明 */
+  background-image: url('../img/top.png'); /* 設置背景圖片的路徑 */
+  background-size: cover; /* 確保圖片充滿按鈕 */
+}
+
+
+.ktitle{
+  width: 500px;
+}
+
+.line-height {
+  line-height: 1.5; /* 調整行高，可以是數字或百分比 */
+}
+
+.custom-btn {
+  padding: 15px 30px; /* 調整內邊距 */
+  font-size: 18px; /* 調整字體大小 */
+  height: 60px; /* 調整按鈕高度 */
+  width: 200px; /* 調整按鈕寬度 */
+}
+
+#cartSuccessAlert {
+  /* 自訂成功訊息的樣式 */
+  display: none;
+  color: #FFFFFF;
+  position: fixed;
+  font-weight: bolder;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: #000000c2;
+  padding: 20px;
+  z-index: 9999;
+  /* border: 5px solid rgb(232, 20, 20); */
+  border-radius: 20px;
+  font-size: 20px;
+}
+/* 默认样式 */
+.custom-input {
+  background-color: #fff; /* 默认背景颜色 */
+  border: 1px solid #000; /* 默认边框颜色 */
+  color: #000; /* 默认文本颜色 */
+}
+
+/* 选中时的样式 */
+.custom-input:checked {
+  background-color: #000; /* 选中时的背景颜色 */
+  color: #fff; /* 选中时的文本颜色 */
+  /* 其他样式 */
+}
+#cartfailAlert{
+  display: none;
+  color: #FFFFFF;
+  position: fixed;
+  font-weight: bolder;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: #000000c2;
+  padding: 20px;
+  z-index: 9999;
+  /* border: 5px solid rgb(232, 20, 20); */
+  border-radius: 20px;
+  font-size: 20px;
+}
+
+.cardpay{
+  width: 40px;
+  height: 25px;
+
+}
+#cartIconWrapper {
+  position: relative;
+  display: inline-block;
+}
+
+#cartBadge {
+  position: absolute;
+  top: -5px;
+  right: -5px;
+  font-size: 0.8em;
+  /* 其他样式，例如颜色、内边距等 */
+}
+
+/* 全屏搜索覆盖层 */
+.search-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.8);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+}
+
+/* 搜索框样式 */
+.search-form {
+  text-align: center;
+  position: relative;
+  display: inline-block;
+}
+
+/* 初始输入框样式 */
+.search-input {
+  padding: 10px 10px 10px 60px;
+  border-radius: 5px;
+  border: 1px solid #ccc; /* 初始边框 */
+  margin-bottom: 10px;
+  width: 790px;
+  height: 50px;
+  background: rgba(0, 0, 0, 0);
+  color: #fff
+}
+
+/* 获取焦点时和有内容时的样式 */
+.search-input:focus,
+.search-input:not(:placeholder-shown) {
+  border-color: #666; /* 获取焦点或有内容时的边框颜色 */
+}
+
+/* 占位符样式 */
+.search-input::placeholder {
+  color: #999; /* 占位符颜色 */
+}
+
+
+.search-icon {
+  position: absolute;
+  top: 44%; /* 垂直居中 */
+  left: 20px; /* 距离右侧的间距 */
+  transform: translateY(-50%); /* 上下居中 */
+  width: 20px;
+  height: 20px;
+  cursor: pointer;
+  z-index: 1;
+}

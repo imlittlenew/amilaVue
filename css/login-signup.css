@@ -1,0 +1,146 @@
+.form-signin .form-floating:focus-within {
+
+    z-index: 2;
+}
+
+.form-signin input[type="email"] {
+    margin-top: 50px;
+    margin-bottom: -1px;
+    border-bottom-right-radius: 0;
+    border-bottom-left-radius: 0;
+}
+
+.form-signin input[type="password"] {
+    margin-bottom: 50px;
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+}
+
+/* 在非移动设备上，图像高度与表单高度相同，仅宽度改变 */
+@media (min-width: 768px) {
+    .bg-img {
+        width: 100%;
+        /* 调整以匹配表单最大宽度为 500px 以及 padding 20px 的总宽度 */
+        height: 100%;
+        /* 与表单高度相同 */
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: right;
+        /* 图片右对齐 */
+    }
+
+    .form-signin {
+        max-width: 500px;
+        padding: 1rem;
+    }
+}
+
+/* 在移动设备上，图像在上方，宽度改变，高度固定 */
+@media (max-width: 767px) {
+    .bg-img {
+        width: 100%;
+        height: 200px;
+        /* 你可以调整固定的高度 */
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: top;
+        /* 图片上对齐 */
+        margin-bottom: 20px;
+        /* 图片与表单之间的间距 */
+    }
+
+    .form-signin {
+        max-width: 500px;
+        padding: 1rem;
+    }
+}
+
+/* 註冊/登入 */
+/* CSS */
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateY(100%);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes slideOut {
+    from {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+    to {
+        opacity: 0;
+        transform: translateY(100%);
+    }
+}
+
+.slideIn {
+    animation: slideIn 0.5s forwards;
+}
+
+.slideOut {
+    animation: slideOut 0.5s forwards;
+}
+
+#loginSuccessAlert {
+    /* 自訂成功訊息的樣式 */
+    display: none;
+    color: #FFFFFF;
+    position: fixed;
+    font-weight: bolder;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: #000000c2;
+    padding: 20px;
+    z-index: 9999;
+    /* border: 5px solid rgb(232, 20, 20); */
+    border-radius: 20px;
+    font-size: 20px;
+}
+
+#registerSuccessAlert {
+    /* 自訂成功訊息的樣式 */
+    display: none;
+    color: #FFFFFF;
+    position: fixed;
+    font-weight: bolder;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: #000000c2;
+    padding: 20px;
+    z-index: 9999;
+    /* border: 5px solid rgb(232, 20, 20); */
+    border-radius: 20px;
+    font-size: 20px;
+}
+
+#forgotPasswordSuccessAlert {
+    /* 自訂成功訊息的樣式 */
+    display: none;
+    color: #FFFFFF;
+    position: fixed;
+    font-weight: bolder;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: #000000c2;
+    padding: 20px;
+    z-index: 9999;
+    /* border: 5px solid rgb(232, 20, 20); */
+    border-radius: 20px;
+    font-size: 20px;
+}
+
+.dark-link {
+    color: black;
+    text-decoration: none;
+}

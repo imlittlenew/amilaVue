@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <link href="img/logo.png" rel="shortcut icon" />
+  <title>AMILA</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="css/bootstrap.min.css" rel="stylesheet">
+  <link href="css/mycss.css" rel="stylesheet">
+  <link href="css/aos.css" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/vue@2"></script>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="js/NavigationBar.js"></script>
+  <script src="js/aos.js"></script>
+  <script src="js/myjs.js"></script>
+  <script src="js/bootstrap.bundle.min.js"></script>
+</head>
+
+<body>
+  <div id="app" >
+    <button @click="scrollToTop" id="backToTopBtn" title="回到頂部"></button>
+    <!-- 優惠訊息 -->
+    <nav class="navbar navbar-expand-lg bg-body-tertiary p-2" data-bs-theme="dark">
+      <div class="container text-center">
+        <div class="row mx-auto">
+          <div class="col-12 ">
+            <span class="navbar-brand mb-0 fs-6 text-light"><b>{{PromotionalMessage}}</b></span>
+  
+          </div>
+        </div>
+        <!-- Content here -->
+      </div>
+    </nav>
+    <!-- 導覽列 -->
+    <div id="navigation"></div>
+
+
+  <!-- Breadcrumb -->
+  <div class="container mt-5">
+    <div class="row">
+      <div class="col-12">
+        <nav aria-label="breadcrumb">
+          <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="index.html" class="link-dark">首頁</a></li>
+            <li class="breadcrumb-item"><a href="orderProblem.html" class="link-dark">常見問題</a></li>
+            <li class="breadcrumb-item active" aria-current="page">訂單問題</li>
+          </ol>
+        </nav>
+      </div>
+    </div>
+  </div>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-3">
+        <div class="list-group list-group-flush">
+          <!-- list-group-item-dark 選到這個頁面改變顏色 -->
+          <a href="orderProblem.html" class="list-group-item list-group-item-action text-start">訂單問題</a>
+          <a href="returnOrExchange.html"
+            class="list-group-item list-group-item-dark list-group-item-action text-start">退換貨須知</a>
+          <a href="delivery.html" class="list-group-item list-group-item-action text-start">運送政策</a>
+        </div>
+      </div>
+
+      <div class="col-md-9">
+        <!-- 開始 -->
+        <div class="row row-cols-1 row-cols-md-1 g-3">
+          <div v-for="(faq, index) in faqs" :key="index" class="col">
+            <h5>
+              <a class="list-group-item list-group-item-action text-start" data-bs-toggle="collapse"
+                :href="'#multiCollapseExample' + (index + 1)" role="button" aria-expanded="false"
+                :aria-controls="'multiCollapseExample' + (index + 1)">{{ faq.question }}</a>
+            </h5>
+            <div class="collapse multi-collapse" :id="'multiCollapseExample' + (index + 1)">
+              <div class="card card-body no-border">
+                <h6 v-html="faq.answer"></h6>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- 結束 -->
+      </div>
+    </div>
+  </div>
+  <!-- 我的頁尾開始 -->
+  <template>
+    <Footer>
+      <div class="b-example-divider"></div>
+      <div class="mt-5 p-4 text-white text-center " style="background-image: url('img/footer.png');" data-bs-theme="dark">
+        <div class="container  mt-5">
+          <footer class="py-5 mt-5">
+            <div class="row  mt-5 ">
+              <div class="col-6  mb-3">
+                <ul class="nav flex-column">
+                  <li class="nav-item mb-2 text-start">
+                    <h5><b>聯絡我們</b></h5>
+                  </li>
+                  <br>
+                  <li class="nav-item mb-2 text-start">
+                    <h6>營業時間｜{{ businessHours }}</h6>
+                  </li>
+                  <li class="nav-item mb-2 text-start">
+                    <h6>地址｜{{ address }}</h6>
+                  </li>
+                  <li class="nav-item mb-2 text-start">
+                    <h6>客服信箱｜{{ email }}</h6>
+                  </li>
+                  <li class="nav-item mb-2 text-start">
+                    <h6>客服電話｜{{ phone }}</h6>
+                  </li>
+                </ul>
+              </div>
+              <div class="col-md-6 ">
+                <form>
+                  <div class="text-start">
+                    <h5><b>訂閱電子報</b></h5>
+                  </div>
+                  <div class="input-group mb-3">
+                    <label for="newsletter1" class="visually-hidden">訂閱電子報信箱</label>
+                    <input type="text" class="form-control rounded-start" placeholder="訂閱電子報信箱"
+                      aria-label="Recipient's username" aria-describedby="button-addon2">
+                    <button class="btn btn-outline-light " type="button" id="button-addon2">訂閱</button>
+                  </div>
+                  <div>
+                    <ul class="list-unstyled d-flex">
+                      <li class="ms-0"><img src="img/JCB.png" class="img-fluid img-thumbnail" alt="..."></a></li>
+                      <li class="ms-0"><img src="img/VISA.png" class="img-fluid img-thumbnail" alt="..."></a></li>
+                      <li class="ms-0"><img src="img/MasterCard.png" class="img-fluid img-thumbnail" alt="..."></a></li>
+                    </ul>
+                  </div>
+                </form>
+              </div>
+            </div>
+            <div class="d-flex flex-column flex-sm-row justify-content-between py-4 my-4 border-top">
+              <p>&copy; {{ currentYear }} 阿米拉工作室股份有限公司</p>
+            </div>
+          </footer>
+        </div>
+      </div>
+    </Footer>
+  </template>
+    <!-- 我的頁尾結束 -->
+  </div>
+
+  <script>
+  
+    // 建立 Vue 實例並設置選項
+    new Vue({
+      el: '#app', // 指定 Vue 實例控制的元素
+      data() {
+        return {
+          PromotionalMessage: '歡慶阿米拉品牌月！全館 $599 享免運！', // 定義數據
+          businessHours: "周一至周五 09：00 - 16：30",
+          address: "臺中市南屯區公益路二段51號(國泰公益大樓)",
+          email: "amila@gmail.com",
+          phone: "(04)2242-1717 #263",
+          currentYear: new Date().getFullYear(),
+          faqs: [
+            {
+              question: '鑑賞期商品不如預期如何辦理退貨呢？',
+              answer: '若需退貨服務，請協助提供以下資訊並與客服聯繫以加快處理流程'
+            },
+            {
+              question: '商品欲申請退貨原因',
+              answer: '商品包裝完整未拆封使用之照片<br>鑑賞期非試用期，若商品拆封或使用後造成無法轉賣(包裝配件損壞不完整有使用痕跡等情況)<br>如有瑕疵情況請事先提出，等物品收回檢查時發現視同人為。<br>詳閱退換貨政策'
+            },
+            {
+              question: '我收到的商品有缺件／瑕疵問題',
+              answer: '可直接聯繫客服並留下以下資訊，客服會於回覆時間盡快回覆您，<br>訂單編號<br>對問題的描述和一些該商品清晰的圖片及影片 (如商品缺件可提供開箱影片)'
+            },
+            {
+              question: '我尚未收到退款?',
+              answer: '請先確認您當初是帳戶退款，還是信用卡刷退<br>【帳戶退款】客服收到退貨後，款項會於7-14個工作天匯至您指定的戶頭<br>【信用卡刷退】客服收到退貨後，款項將會於7-14個工作天內完成退刷，再請您留意本期或下期帳單及相關通知信件'
+            },
+            {
+              question: '退換貨政策',
+              answer: '商品退換貨條件<br><br>欲退貨商品，請注意須符合以下條件才能辦理退貨。<br><br>(1) 全新商品 : 鑑賞期非試用期，商品經使用將無法退貨，商品收到後請先確認外觀是否為瑕疵，經拆裝使用後怒無法辦理退貨。<br><br>(2) 完整包裝 : 商品退貨時必須回復原狀，亦即必須回復至收到商品時的原始狀態 ( 包含商品、配件、贈品、發票、原廠包裝 ( 紙、盒、袋 ) 、內附文件或資料的完整性等 ) ，若商品被認定為已逾越檢查商品之必要程度，將影響退貨權利的行使權或需負擔因損壞產生之費用。<br><br>(3) 鑑賞期內 : 取貨後的七天內。 ( 依消保法規定，實體店面購買取貨不適用七天鑑賞期 )<br><br>(4) 非商品瑕疵或賣家出貨錯誤等因賣家疏失導致情況下，如消費者有退換貨需求需自行負擔退換運費。 ( 請勿使用到付包裹寄送，會直接拒收哦！ )<br><br>(5) 為避免接觸性傳染疾病，請購買前先考量好自身毛小孩使用需求，以免造成日後買賣糾紛，如您的商品已經拆封使用，恕無法退換貨。<br><br>(6) 如當初訂單有達免運資格，在退換部分商品之後訂單金額未達當初免運金額門檻，仍將於退貨退款時扣除原訂單之物流費80元。<br><br>(7) 若原先符合滿額贈活動，後因退貨而未達活動標準時，也須將滿額贈品一併退回。<br><br><br>無法退貨情形<br><br>如有以下情形者怒無法辦理退貨，若寄回發現商品未有瑕疵或不滿足退貨條件，消費者必須支付運送過程所產生的相關費用。<br><br>(1) 超過七天鑑賞期<br><br>(2) 非全新商品 : 鑑賞期非適用期，若商品使用後造成無法轉賣，怒不提供退換貨。<br><br>(3) 非完整包裝<br><br>(4) 活動贈品未完整退回<br><br>(5) 螢幕色差、極小的污點等，在國際驗貨標準皆是屬於可接受的範圍，並不屬於瑕疵<br><br>(6) 商品因個人不當使用拆裝等人為因素造成之故障、損毀、磨損、擦傷、刮傷、髒污、包裝破損不完整或是配件不齊等者。<br><br>(7) 接觸型商品 : 鑑賞期非試用期，商品經使用將無法退換貨，商品收到後請先確認外觀是否為瑕疵，經拆裝使用後怒無法辦理退貨。屬於個人衛生用品，已拆封使用無法接受退換貨。 ( 例如 : 寵物床墊、寵物衣物、寵物推車、項圈等商品 )<br><br>(8) 已拆封商品 : 基於個人衛生疑慮與保障顧客權益，商品經過拆封後無法因不喜歡、等等因素而辦理退換貨，除非拆裝時商品內容有瑕疵，否則一旦開封恕不提供退貨。<br><br>(9) 毀損、短少商品 : 商品已經經過消費者加工、毀損或者是配件短少等商品。<br><br><br>P.S. 若有收到上述無法退貨之商品，將於計算退貨退款時扣除該商品金額。或因最終商品已非完整無法退貨，mao 會將貨品寄還於您，而此趟寄回給您的運費 ( 貨到付款運費130元起 ) 將由您自行負擔，因此退回商品時請務必多加留意商品的完整性。<br><br><br>退款時間說明<br><br>◎ 信用卡付款<br><br>(1) 取消訂單 : 將於收到您的取消訂單需求後的7-14個工作天為您完成退刷，請留意本期或下期帳單及相關EMAIL通知信件。 ( 實際入帳時間要依銀行作業流程 )<br><br>(2) 申請退貨 : 將於收到商品確認可辦理退款後的7-14個工作天內為您完成退刷，請留意本期或下期帳單及相關EMAIL通知信件。 ( 實際入帳時間要依銀行作業流程 )<br><br>若經由超商退貨便退貨，整體退貨時間約需14-21個工作天，還請您耐心等候。<br><br><br>◎ 超商取貨付款、ATM付款<br><br>(1) 申請退貨 : 將於收到商品確認可辦理退款後的7-14個工作天內，將款項退回至您的指定的帳戶內。<br><br>若經由超商退貨便退貨，整體退貨時間約需14-21個工作天，還請您耐心等候。<br><br>非商品瑕疵或賣家出貨錯誤等因賣家疏失導致情況下，如需使用退貨變將於退款款項扣除75元退貨運費。'
+            }
+          ]
+            };
+          },
+      
+      mounted() {
+        // 選擇所有具有 "hover" 類別的元素，並為它們添加滑鼠離開事件監聽器
+        document.querySelectorAll(".hover").forEach(element => {
+          element.addEventListener('mouseleave', () => {
+            element.classList.remove("hover");
+          });
+        });
+
+        // 在 Vue 實例掛載後執行的代碼
+        this.handleScroll(); // 呼叫 handleScroll 方法，初始化滾動事件處理程序
+      },
+
+      methods: {
+        handleScroll() {
+          // 滾動事件處理程序
+          let prevScrollpos = window.pageYOffset; // 儲存先前的捲動位置
+          let backToTopBtn = document.getElementById("backToTopBtn"); // 獲取回到頂部按鈕元素
+  
+          window.addEventListener("scroll", () => {
+            // 監聽滾動事件
+            let currentScrollPos = window.pageYOffset; // 當前捲動位置
+  
+            if ((currentScrollPos > 100 && currentScrollPos !== 0) && prevScrollpos > currentScrollPos) {
+              // 判斷是否顯示回到頂部按鈕
+              backToTopBtn.style.opacity = "1"; // 顯示按鈕
+            } else {
+              backToTopBtn.style.opacity = "0"; // 隱藏按鈕
+            }
+  
+            prevScrollpos = currentScrollPos; // 更新先前捲動位置
+          });
+  
+          backToTopBtn.addEventListener("click", () => {
+            // 監聽回到頂部按鈕的點擊事件
+            this.scrollToTop(); // 呼叫 scrollToTop 方法，實現滾動到頂部的功能
+          });
+        },
+        scrollToTop() {
+          // 捲動到頂部的方法
+          window.scrollTo({
+            top: 0,
+            behavior: "smooth" // 使用平滑滾動效果
+          });
+        },
+      }  
+    });
+  </script>
+  <script>
+    // 獲取 Vue 組件的容器元素
+    const navigationElement = document.getElementById('navigation');
+  
+    // 創建 Vue 實例並掛載到容器元素上
+    new Vue({
+      render: h => h(NavigationBar)
+    }).$mount(navigationElement);
+  </script>
+</body>
+
+</html>

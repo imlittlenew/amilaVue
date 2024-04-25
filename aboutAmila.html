@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <link href="img/logo.png" rel="shortcut icon" />
+  <title>AMILA</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="css/bootstrap.min.css" rel="stylesheet">
+  <link href="css/mycss.css" rel="stylesheet">
+  <link href="css/aos.css" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/vue@2"></script>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="js/NavigationBar.js"></script>
+  <script src="js/aos.js"></script>
+  <script src="js/myjs.js"></script>
+  <script src="js/bootstrap.bundle.min.js"></script>
+</head>
+
+<body>
+  <div id="app" >
+    <button @click="scrollToTop" id="backToTopBtn" title="回到頂部"></button>
+    <!-- 優惠訊息 -->
+    <nav class="navbar navbar-expand-lg bg-body-tertiary p-2" data-bs-theme="dark">
+      <div class="container text-center">
+        <div class="row mx-auto">
+          <div class="col-12 ">
+            <span class="navbar-brand mb-0 fs-6 text-light"><b>{{PromotionalMessage}}</b></span>
+  
+          </div>
+        </div>
+        <!-- Content here -->
+      </div>
+    </nav>
+    <!-- 導覽列 -->
+    <div id="navigation"></div>
+
+    <div class="container">
+      <!-- 品牌口號img -->
+      <div class="row mt-5 mb-5">
+        <div class="col align-self-center ">
+          <div class="text-center t1" data-aos="fade-up"><b>{{ slogan1 }}</b></div>
+          <div class="text-center t1 mb-5" data-aos="fade-up"><b>{{ slogan2 }}</b></div>
+          <img :src="titleImg" class="img-fluid d-block rounded-3 w-100" data-aos="fade-up" alt="title04">
+        </div>
+      </div>
+  
+      <div class="row">
+        <div class="card mb-3 mt-5 border-0" v-for="(story, index) in stories" :key="index" data-aos="fade-up" data-aos-anchor-placement="top-center">
+          <div class="row g-0 align-items-center">
+            <template v-if="index % 2 !== 0">
+              <div class="col-md-5">
+                <img :src="story.img" class="img-fluid rounded-3 W-100" alt="...">
+              </div>
+              <div class="col-md-1"></div>
+              <div class="col-md-6">
+                <div class="card-body">
+                  <h1 class="card-title mb-5"><b>{{ story.title }}</b></h1>
+                  <h4 class="card-text">{{ story.content }}</h4>
+                </div>
+              </div>
+            </template>
+            <template v-else>
+              <div class="col-md-6">
+                <div class="card-body">
+                  <h1 class="card-title mb-5"><b>{{ story.title }}</b></h1>
+                  <h4 class="card-text">{{ story.content }}</h4>
+                </div>
+              </div>
+              <div class="col-md-1"></div>
+              <div class="col-md-5">
+                <img :src="story.img" class="img-fluid rounded-3 W-100" alt="...">
+              </div>
+            </template>
+          </div>
+        </div>
+      </div>
+    </div><!--container End-->
+
+  <!-- 我的頁尾開始 -->
+  <template>
+    <Footer>
+      <div class="b-example-divider"></div>
+      <div class="mt-5 p-4 text-white text-center " style="background-image: url('img/footer.png');" data-bs-theme="dark">
+        <div class="container  mt-5">
+          <footer class="py-5 mt-5">
+            <div class="row  mt-5 ">
+              <div class="col-6  mb-3">
+                <ul class="nav flex-column">
+                  <li class="nav-item mb-2 text-start">
+                    <h5><b>聯絡我們</b></h5>
+                  </li>
+                  <br>
+                  <li class="nav-item mb-2 text-start">
+                    <h6>營業時間｜{{ businessHours }}</h6>
+                  </li>
+                  <li class="nav-item mb-2 text-start">
+                    <h6>地址｜{{ address }}</h6>
+                  </li>
+                  <li class="nav-item mb-2 text-start">
+                    <h6>客服信箱｜{{ email }}</h6>
+                  </li>
+                  <li class="nav-item mb-2 text-start">
+                    <h6>客服電話｜{{ phone }}</h6>
+                  </li>
+                </ul>
+              </div>
+              <div class="col-md-6 ">
+                <form>
+                  <div class="text-start">
+                    <h5><b>訂閱電子報</b></h5>
+                  </div>
+                  <div class="input-group mb-3">
+                    <label for="newsletter1" class="visually-hidden">訂閱電子報信箱</label>
+                    <input type="text" class="form-control rounded-start" placeholder="訂閱電子報信箱"
+                      aria-label="Recipient's username" aria-describedby="button-addon2">
+                    <button class="btn btn-outline-light " type="button" id="button-addon2">訂閱</button>
+                  </div>
+                  <div>
+                    <ul class="list-unstyled d-flex">
+                      <li class="ms-0"><img src="img/JCB.png" class="img-fluid img-thumbnail" alt="..."></a></li>
+                      <li class="ms-0"><img src="img/VISA.png" class="img-fluid img-thumbnail" alt="..."></a></li>
+                      <li class="ms-0"><img src="img/MasterCard.png" class="img-fluid img-thumbnail" alt="..."></a></li>
+                    </ul>
+                  </div>
+                </form>
+              </div>
+            </div>
+            <div class="d-flex flex-column flex-sm-row justify-content-between py-4 my-4 border-top">
+              <p>&copy; {{ currentYear }} 阿米拉工作室股份有限公司</p>
+            </div>
+          </footer>
+        </div>
+      </div>
+    </Footer>
+  </template>
+    <!-- 我的頁尾結束 -->
+  </div>
+
+
+  <script>
+  
+    // 建立 Vue 實例並設置選項
+    new Vue({
+      el: '#app', // 指定 Vue 實例控制的元素
+      data() {
+        return {
+          PromotionalMessage: '歡慶阿米拉品牌月！全館 $599 享免運！', // 定義數據
+          businessHours: "周一至周五 09：00 - 16：30",
+          address: "臺中市南屯區公益路二段51號(國泰公益大樓)",
+          email: "amila@gmail.com",
+          phone: "(04)2242-1717 #263",
+          currentYear: new Date().getFullYear(),
+          slogan1: '讓毛孩活得開心',
+          slogan2: '吃得健康',
+          titleImg: 'img/abouttitle.png',
+          stories: [
+            {
+              title: '品牌理念 Story',
+              content: '我們相信「健康的寵物食品不是奢侈品，要能讓每隻毛小孩長期享用」，致力於「打造頂級、營養又平易近人的濕食」，所有食品皆由專業獸醫師、營養配方師精心調配把關，希望「讓毛孩吃得更好，陪我們一起慢慢變老。」',
+              img: 'img/about01.png'
+            },
+            {
+              title: '產品承諾 Principle',
+              content: '【營養均衡】\n✔ 由專業獸醫師、營養配方師監製\n✔ 全系列主食符合美國 NRC/AAFCO 犬貓營養標準\n\n【安全第一】\n✔ 嚴選履歷食材製作，科學檢驗無藥物殘留\n✔ 生食餐採用超高壓滅菌技術，符合國家最嚴格生食標準\n✔ 投保 3000 萬元產品責任險，毛拔麻更安心/更有保障\n\n【公開透明】\n✔ 公開營養成分、產品履歷\n✔ 公開進貨證明、檢驗報告',
+              img: 'img/about02.png'
+            },
+            {
+              title: '加入我們 Join us',
+              content: '「讓毛孩吃得更好，陪我們一起慢慢變老。」\n汪喵正在加速成長，如果你也喜歡挑戰新的事物，同時具有不斷自我成長的能力，來吧！歡迎與汪喵一起努力！',
+              img: 'img/about03.png'
+            }
+          ]
+            };
+          },
+      
+      mounted() {
+        this.$nextTick(() => {
+          AOS.init({
+            offset: 100,
+            duration: 600,
+            easing: 'ease-in-out',
+            delay: 100,
+            once: false
+          });
+          AOS.refresh();
+        });
+
+        // 選擇所有具有 "hover" 類別的元素，並為它們添加滑鼠離開事件監聽器
+        document.querySelectorAll(".hover").forEach(element => {
+          element.addEventListener('mouseleave', () => {
+            element.classList.remove("hover");
+          });
+        });
+
+        // 在 Vue 實例掛載後執行的代碼
+        this.handleScroll(); // 呼叫 handleScroll 方法，初始化滾動事件處理程序
+      },
+
+      methods: {
+        handleScroll() {
+          // 滾動事件處理程序
+          let prevScrollpos = window.pageYOffset; // 儲存先前的捲動位置
+          let backToTopBtn = document.getElementById("backToTopBtn"); // 獲取回到頂部按鈕元素
+  
+          window.addEventListener("scroll", () => {
+            // 監聽滾動事件
+            let currentScrollPos = window.pageYOffset; // 當前捲動位置
+  
+            if ((currentScrollPos > 100 && currentScrollPos !== 0) && prevScrollpos > currentScrollPos) {
+              // 判斷是否顯示回到頂部按鈕
+              backToTopBtn.style.opacity = "1"; // 顯示按鈕
+            } else {
+              backToTopBtn.style.opacity = "0"; // 隱藏按鈕
+            }
+  
+            prevScrollpos = currentScrollPos; // 更新先前捲動位置
+          });
+  
+          backToTopBtn.addEventListener("click", () => {
+            // 監聽回到頂部按鈕的點擊事件
+            this.scrollToTop(); // 呼叫 scrollToTop 方法，實現滾動到頂部的功能
+          });
+        },
+        scrollToTop() {
+          // 捲動到頂部的方法
+          window.scrollTo({
+            top: 0,
+            behavior: "smooth" // 使用平滑滾動效果
+          });
+        },
+      }  
+    });
+  </script>
+  <script>
+    // 獲取 Vue 組件的容器元素
+    const navigationElement = document.getElementById('navigation');
+  
+    // 創建 Vue 實例並掛載到容器元素上
+    new Vue({
+      render: h => h(NavigationBar)
+    }).$mount(navigationElement);
+  </script>
+    
+
+</body>
+
+</html>

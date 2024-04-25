@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <link href="img/logo.png" rel="shortcut icon" />
+  <title>AMILA</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="css/bootstrap.min.css" rel="stylesheet">
+  <link href="css/mycss.css" rel="stylesheet">
+  <link href="css/aos.css" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/vue@2"></script>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="js/NavigationBar.js"></script>
+  <script src="js/aos.js"></script>
+  <script src="js/myjs.js"></script>
+  <script src="js/bootstrap.bundle.min.js"></script>
+</head>
+
+<body>
+  <div id="app" >
+    <button @click="scrollToTop" id="backToTopBtn" title="回到頂部"></button>
+    <!-- 優惠訊息 -->
+    <nav class="navbar navbar-expand-lg bg-body-tertiary p-2" data-bs-theme="dark">
+      <div class="container text-center">
+        <div class="row mx-auto">
+          <div class="col-12 ">
+            <span class="navbar-brand mb-0 fs-6 text-light"><b>{{PromotionalMessage}}</b></span>
+  
+          </div>
+        </div>
+        <!-- Content here -->
+      </div>
+    </nav>
+    <!-- 導覽列 -->
+    <div id="navigation"></div>
+
+
+  <!-- Breadcrumb -->
+  <div class="container mt-5">
+    <div class="row">
+      <div class="col-12">
+        <nav aria-label="breadcrumb">
+          <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="index.html" class="link-dark">首頁</a></li>
+            <li class="breadcrumb-item"><a href="orderProblem.html" class="link-dark">常見問題</a></li>
+            <li class="breadcrumb-item active" aria-current="page">訂單問題</li>
+          </ol>
+        </nav>
+      </div>
+    </div>
+  </div>
+  <div class="container">
+    <!-- 品牌清單 -->
+    <div class="row">
+      <div class="col-md-3">
+        <div class="list-group list-group-flush">
+          <!-- list-group-item-dark 選到這個頁面改變顏色 -->
+          <a href="orderProblem.html" class="list-group-item list-group-item-action text-start">訂單問題</a>
+          <a href="returnOrExchange.html"
+            class="list-group-item list-group-item-action text-start">退換貨須知</a>
+          <a href="delivery.html" class="list-group-item list-group-item-action text-start list-group-item-dark">運送政策</a>
+        </div>
+      </div>
+
+
+      <div class="col-md-9">
+        <!-- 開始 -->
+        <div class="row row-cols-1 row-cols-md-1 g-3">
+          <div v-for="(faq, index) in faqs" :key="index" class="col">
+            <h5>
+              <a class="list-group-item list-group-item-action text-start" data-bs-toggle="collapse"
+                :href="'#multiCollapseExample' + (index + 1)" role="button" aria-expanded="false"
+                :aria-controls="'multiCollapseExample' + (index + 1)">{{ faq.question }}</a>
+            </h5>
+            <div class="collapse multi-collapse" :id="'multiCollapseExample' + (index + 1)">
+              <div class="card card-body no-border">
+                <h6 v-html="faq.answer"></h6>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- 結束 -->
+      </div>
+    </div>
+  </div>
+  <!-- 我的頁尾開始 -->
+  <template>
+    <Footer>
+      <div class="b-example-divider"></div>
+      <div class="mt-5 p-4 text-white text-center " style="background-image: url('img/footer.png');" data-bs-theme="dark">
+        <div class="container  mt-5">
+          <footer class="py-5 mt-5">
+            <div class="row  mt-5 ">
+              <div class="col-6  mb-3">
+                <ul class="nav flex-column">
+                  <li class="nav-item mb-2 text-start">
+                    <h5><b>聯絡我們</b></h5>
+                  </li>
+                  <br>
+                  <li class="nav-item mb-2 text-start">
+                    <h6>營業時間｜{{ businessHours }}</h6>
+                  </li>
+                  <li class="nav-item mb-2 text-start">
+                    <h6>地址｜{{ address }}</h6>
+                  </li>
+                  <li class="nav-item mb-2 text-start">
+                    <h6>客服信箱｜{{ email }}</h6>
+                  </li>
+                  <li class="nav-item mb-2 text-start">
+                    <h6>客服電話｜{{ phone }}</h6>
+                  </li>
+                </ul>
+              </div>
+              <div class="col-md-6 ">
+                <form>
+                  <div class="text-start">
+                    <h5><b>訂閱電子報</b></h5>
+                  </div>
+                  <div class="input-group mb-3">
+                    <label for="newsletter1" class="visually-hidden">訂閱電子報信箱</label>
+                    <input type="text" class="form-control rounded-start" placeholder="訂閱電子報信箱"
+                      aria-label="Recipient's username" aria-describedby="button-addon2">
+                    <button class="btn btn-outline-light " type="button" id="button-addon2">訂閱</button>
+                  </div>
+                  <div>
+                    <ul class="list-unstyled d-flex">
+                      <li class="ms-0"><img src="img/JCB.png" class="img-fluid img-thumbnail" alt="..."></a></li>
+                      <li class="ms-0"><img src="img/VISA.png" class="img-fluid img-thumbnail" alt="..."></a></li>
+                      <li class="ms-0"><img src="img/MasterCard.png" class="img-fluid img-thumbnail" alt="..."></a></li>
+                    </ul>
+                  </div>
+                </form>
+              </div>
+            </div>
+            <div class="d-flex flex-column flex-sm-row justify-content-between py-4 my-4 border-top">
+              <p>&copy; {{ currentYear }} 阿米拉工作室股份有限公司</p>
+            </div>
+          </footer>
+        </div>
+      </div>
+    </Footer>
+  </template>
+    <!-- 我的頁尾結束 -->
+  </div>
+
+  <script>
+  
+    // 建立 Vue 實例並設置選項
+    new Vue({
+      el: '#app', // 指定 Vue 實例控制的元素
+      data() {
+        return {
+          PromotionalMessage: '歡慶阿米拉品牌月！全館 $599 享免運！', // 定義數據
+          businessHours: "周一至周五 09：00 - 16：30",
+          address: "臺中市南屯區公益路二段51號(國泰公益大樓)",
+          email: "amila@gmail.com",
+          phone: "(04)2242-1717 #263",
+          currentYear: new Date().getFullYear(),
+          faqs: [
+            {
+                question: '運費計算及免運門檻？',
+                answer: '宅配&超取運費為 NT$80，滿千免運。',
+            },
+            {
+                question: '我的訂單什麼時候會出貨呢?',
+                answer: '現貨商品約 3 個工作天(不含假日)安排出貨，缺貨及預購商品另計。登入官網內有訂單狀態，【已確認】表示出貨完成；【處理中】可聯繫客服詢問。',
+            },
+            {
+                question: '寄出後什麼時候會收到商品呢?',
+                answer: '宅配通常物流時程1-2天、超取約2-4天配達。補貨及預購商品則不再此範圍。',
+            },
+            {
+                question: '為何我的訂單被分開寄送?',
+                answer: '若是您訂單所訂購的品項眾多，相關人員會拆單幫您安排寄出。<br>◎提醒您：拆單配送主要是依物流實際配送時間，故不會同時送達，不便之處還請見諒!',
+            }
+        ]
+            };
+          },
+      
+      mounted() {
+        // 選擇所有具有 "hover" 類別的元素，並為它們添加滑鼠離開事件監聽器
+        document.querySelectorAll(".hover").forEach(element => {
+          element.addEventListener('mouseleave', () => {
+            element.classList.remove("hover");
+          });
+        });
+
+        // 在 Vue 實例掛載後執行的代碼
+        this.handleScroll(); // 呼叫 handleScroll 方法，初始化滾動事件處理程序
+      },
+
+      methods: {
+        handleScroll() {
+          // 滾動事件處理程序
+          let prevScrollpos = window.pageYOffset; // 儲存先前的捲動位置
+          let backToTopBtn = document.getElementById("backToTopBtn"); // 獲取回到頂部按鈕元素
+  
+          window.addEventListener("scroll", () => {
+            // 監聽滾動事件
+            let currentScrollPos = window.pageYOffset; // 當前捲動位置
+  
+            if ((currentScrollPos > 100 && currentScrollPos !== 0) && prevScrollpos > currentScrollPos) {
+              // 判斷是否顯示回到頂部按鈕
+              backToTopBtn.style.opacity = "1"; // 顯示按鈕
+            } else {
+              backToTopBtn.style.opacity = "0"; // 隱藏按鈕
+            }
+  
+            prevScrollpos = currentScrollPos; // 更新先前捲動位置
+          });
+  
+          backToTopBtn.addEventListener("click", () => {
+            // 監聽回到頂部按鈕的點擊事件
+            this.scrollToTop(); // 呼叫 scrollToTop 方法，實現滾動到頂部的功能
+          });
+        },
+        scrollToTop() {
+          // 捲動到頂部的方法
+          window.scrollTo({
+            top: 0,
+            behavior: "smooth" // 使用平滑滾動效果
+          });
+        },
+      }  
+    });
+  </script>
+  <script>
+    // 獲取 Vue 組件的容器元素
+    const navigationElement = document.getElementById('navigation');
+  
+    // 創建 Vue 實例並掛載到容器元素上
+    new Vue({
+      render: h => h(NavigationBar)
+    }).$mount(navigationElement);
+  </script>
+</body>
+
+</html>

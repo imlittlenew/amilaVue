@@ -1,0 +1,697 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <link href="img/logo.png" rel="shortcut icon" />
+  <title>AMILA</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="css/bootstrap.min.css" rel="stylesheet">
+  <link href="css/mycss.css" rel="stylesheet">
+  <link href="css/aos.css" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/vue@2"></script>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="js/NavigationBar.js"></script>
+  <script src="js/aos.js"></script>
+  <script src="js/myjs.js"></script>
+  <script src="js/bootstrap.bundle.min.js"></script>
+</head>
+
+<body>
+  
+  <div id="app" >
+  <button @click="scrollToTop" id="backToTopBtn" title="回到頂部"></button>
+  <!-- 優惠訊息 -->
+  <nav class="navbar navbar-expand-lg bg-body-tertiary p-2" data-bs-theme="dark">
+    <div class="container text-center">
+      <div class="row mx-auto">
+        <div class="col-12 ">
+          <span class="navbar-brand mb-0 fs-6 text-light"><b>{{PromotionalMessage}}</b></span>
+
+        </div>
+      </div>
+      <!-- Content here -->
+    </div>
+  </nav>
+  <!-- 導覽列 -->
+  <div id="navigation"></div>
+  <!-- 圖片輪播 -->
+  <template>
+  <div id="carouselExampleIndicators" class="carousel slide carousel-fade mt-0 mb-5" data-bs-ride="carousel">
+    <div class="carousel-indicators">
+      <button v-for="(image, index) in headerImages" :key="index" type="button" :data-bs-target="'#carouselExampleIndicators'" :data-bs-slide-to="index" :class="{ 'active': index === 0 }" :aria-current="index === 0 ? 'true' : null" aria-label="Slide {{ index + 1 }}"></button>
+    </div>
+    <div class="carousel-inner">
+      <div v-for="(image, index) in headerImages" :key="index" :class="{ 'carousel-item': true, 'active': index === 0 }" :data-bs-interval="10000">
+        <img :src="image.src" class="d-block img-fluid w-100" :alt="'Slide ' + (index + 1)">
+      </div>
+    </div>
+    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Next</span>
+    </button>
+  </div>
+</template>
+  <!-- ad三張圖片 -->
+  <Advertisement>
+    <div class="container">
+      <!-- .gx-* 類別可以用來控制水平 gutter 的寬度 -->
+  
+      <template>
+        <div class="row" data-aos="fade-up">
+          <div class="col" v-for="(item, index) in advertisements" :key="index" id="ad">
+            <img :src="item.image" class="img-fluid" />
+            <div :class="item.iconClass">
+              <h2>{{ item.title }}</h2>
+              <h4>查看更多</h4><a :href="item.link"></a>
+            </div>
+          </div>
+        </div>
+      <div>
+
+        <div class="alert cart-message" role="alert" v-show="showCartMessage">
+          <img src="img/bigcart.png" class="d-block img-fluid mx-auto" alt="cart">
+          商品已成功加入購物車！
+        </div>
+
+        <!-- 新品搶先看img -->
+        <div class="row mt-5 mb-5" data-aos="fade-up">
+          <div class="col align-self-center">
+            <img src="img/title01.png" class="img-fluid mx-auto d-block w-75" alt="title04">
+          </div>
+        </div>
+      </div>
+    
+  
+  
+    
+      <div>
+        <!-- 新品搶先看 -->
+        <div class="row row-cols-1 row-cols-md-4 g-3" data-aos="fade-up">
+          <div v-for="(item, index) in products" :key="index" class="col">
+            <div class="card h-100 border-0 shadow-sm p-2 mb-1 bg-body rounded">
+              <img :src="item.image" class="card-img-top" :alt="'Product ' + (index + 1)">
+              <div class="card-body d-flex flex-column">
+                <div class="flex-grow-1">
+                  <p class="card-title" style="color: gray;">{{ item.name }}</p>
+                  <p class="card-text"><b>NT${{ item.price }}</b></p>
+                </div>
+                <!-- 立即購買按鈕 -->
+                <button type="button" class="btn btn-outline-dark mt-auto" :data-product-id="item.product_id" data-bs-toggle="modal" :data-bs-target="'#exampleModal_' + item.product_id" @click="displayInModal(item.product_id, products)">
+                  立即購買
+                </button>
+                
+                
+              </div>
+            </div>
+          </div>
+        </div>
+      
+        <!-- 加入購物車視窗選項 -->
+        <div v-for="(item, index) in products" :key="index">
+          <div class="modal fade" :id="'exampleModal_' + item.product_id" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true" >
+            <div class="modal-dialog modal-dialog-centered">
+              <div class="modal-content">
+                <div class="modal-body">
+                  <div class="container-fluid">
+                    <div class="row">
+                      <div class="col-md-6">
+                        <img :src="item.image" class="img-fluid" />
+                      </div>
+                      <div class="col-md-6 ms-auto">
+                        <div class="row mt-2">
+                          <div class="col-12 fs-5 fw-bold ">{{ item.name }}</div>
+                          <div class="col-12 mb-4 fs-5 fw-bold mt-3">NT${{ item.price }}</div>
+                        </div>
+                      </div>
+                      <div class="row">
+                        <div class="col-6 mt-4">
+                          <div class="col-12 .fs-6 badge bg-secondary text-wrap">全館滿$599免運</div>
+                        </div>
+                        <div class="col-6">
+                          <div class="col">
+                            <label for="quantity" class="me-2 text-secondary fs-6">購買數量</label>
+                            <form class="d-flex align-items-center" id="purchaseForm">
+                              <div class="d-flex align-items-center">
+                                <button type="button" @click="decreaseQuantity(item)" class="me-2 btn btn-outline-dark">-</button>
+                                <input id="quantity" name="quantity" min="1" :value="getQuantity(item)" class="form-control">
+                                <button type="button" @click="increaseQuantity(item)" class="ms-2 btn btn-outline-dark">+</button>                               
+                                
+                              </div>
+                            </form>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">取消</button>
+                  <button type="button" class="btn btn-dark" @click="addToCart(item)">加入購物車</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </template>
+      <!-- container -->
+    </div>
+</Advertisement>
+  <!-- 圖片輪播 -->
+    <template>
+      <div id="carouselExampleIndicators02" class="carousel slide carousel-fade mt-5 mb-5" data-bs-ride="carousel" data-aos="fade-up">
+        <div class="carousel-indicators">
+          <button v-for="(product, index) in NewProducts" :key="index" type="button" :data-bs-target="'#carouselExampleIndicators02'" :data-bs-slide-to="index" :class="{ 'active': index === 0 }" :aria-current="index === 0 ? 'true' : null" :aria-label="'Slide ' + (index + 1)"></button>
+        </div>
+        <div class="carousel-inner">
+          <div v-for="(product, index) in NewProducts" :key="index" :class="{ 'carousel-item': true, 'active': index === 0 }" :data-bs-interval="10000">
+            <img :src="product.src" class="d-block img-fluid w-100" :alt="'Slide ' + (index + 1)">
+          </div>
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators02" data-bs-slide="prev">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators02" data-bs-slide="next">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Next</span>
+        </button>
+      </div>
+    </template>
+  <!-- 熱銷推薦img -->
+  <HotRecommend>
+    <div class="container">
+      <div class="row mt-5 mb-5" data-aos="fade-up">
+        <div class="col align-self-center ">
+          <img src="img/title02.png" class="img-fluid mx-auto d-block w-75" alt="title04">
+        </div>
+      </div>
+
+
+
+
+<!-- 熱銷推薦 -->
+<div class="container" data-aos="fade-up">
+  <div class="row row-cols-1 row-cols-md-4 g-3">
+    <div v-for="(item, index) in hotProducts" :key="index" class="col">
+      <div class="card h-100 border-0 shadow-sm p-2 mb-1 bg-body rounded">
+        <img :src="item.image" class="card-img-top" :alt="'Product ' + (index + 1)">
+        <div class="card-body d-flex flex-column">
+          <div class="flex-grow-1">
+            <p class="card-title" style="color: gray;">{{ item.name }}</p>
+            <p class="card-text"><b>NT${{ item.price }}</b></p>
+          </div>
+          <!-- 立即購買按鈕 -->
+          <button type="button" class="btn btn-outline-dark mt-auto" :data-product-id="item.product_id" data-bs-toggle="modal" :data-bs-target="'#exampleModal2_' + item.product_id" @click="displayInModal(item.product_id, hotProducts)">
+            立即購買
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- 加入購物車視窗選項 -->
+<div v-for="(item, index) in hotProducts" :key="index">
+  <div class="modal fade" :id="'exampleModal2_' + item.product_id" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-body">
+          <div class="container-fluid">
+            <div class="row">
+              <div class="col-md-6">
+                <img :src="item.image" class="img-fluid" />
+              </div>
+              <div class="col-md-6 ms-auto">
+                <div class="row mt-2">
+                  <div class="col-12 fs-5 fw-bold ">{{ item.name }}</div>
+                  <div class="col-12 mb-4 fs-5 fw-bold mt-3">NT${{ item.price }}</div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-6 mt-4">
+                  <div class="col-12 .fs-6 badge bg-secondary text-wrap">全館滿$599免運</div>
+                </div>
+                <div class="col-6">
+                  <div class="col">
+                    <label for="quantity" class="me-2 text-secondary fs-6">購買數量</label>
+                    <form class="d-flex align-items-center" id="purchaseForm">
+                      <div class="d-flex align-items-center">
+                        <button type="button" @click="decreaseQuantity(item)" class="me-2 btn btn-outline-dark">-</button>
+                        <input id="quantity" name="quantity" min="1" :value="getQuantity(item)" class="form-control">
+                        <button type="button" @click="increaseQuantity(item)" class="ms-2 btn btn-outline-dark">+</button>
+                      </div>
+                    </form>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">取消</button>
+          <button type="button" class="btn btn-dark" @click="addToCart(item)">加入購物車</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+  
+      <!-- 好評推薦img -->
+      <div class="row mt-5 mb-5" data-aos="fade-up">
+        <div class="col align-self-center ">
+          <img src="img/title03.png" class="img-fluid mx-auto d-block w-75" alt="title04">
+        </div>
+      </div>
+      <!-- 好評推薦 -->
+      <template>
+        <div class="container" data-aos="fade-up">
+          <div class="row row-cols-2 row-cols-md-4 g-3">
+            <div v-for="(testimonial, index) in testimonials" :key="index" class="col">
+              <div class="card h-100 border-0 card">
+                <img class="rounded-circle shadow p-3 mb-5 bg-body rounded" :src="testimonial.image" />
+                <div class="card-body">
+                  <h3 class="card-title text-center"><b>{{ testimonial.name }}</b></h3>
+                  <p class="card-text">{{ testimonial.review }}</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </template>
+  
+      <!-- 嚴選品牌img -->
+      <div class="row mt-5 mb-5" data-aos="fade-up">
+        <div class="col align-self-center ">
+          <img src="img/title04.png" class="img-fluid mx-auto d-block w-75" alt="title04">
+        </div>
+      </div>
+  
+      <!-- 嚴選品牌 -->
+      <template>
+        <div class="row row-cols-3 row-cols-md-6 g-3" data-aos="fade-up">
+          <div v-for="(brand, index) in brands" :key="index" class="col">
+            <div class="card h-100 border-0 card">
+              <img class="card-img-top" :src="brand.image" />
+            </div>
+          </div>
+        </div>
+      </template>
+      <!-- 品牌口號img -->
+  
+      <div class="row mt-5 mb-5" data-aos="fade-up">
+        <div class="col align-self-center ">
+          <img src="img/title05.png" class="img-fluid mx-auto d-block w-75" alt="title04">
+        </div>
+      </div>
+      <!-- 購物須知 -->
+      <template>
+        <div class="card-group row row-cols-2 row-cols-md-4 g-2" data-aos="fade-up">
+          <div v-for="(notice, index) in notices" :key="index" class="card mb-3 border-0">
+            <div class="row align-items-center">
+              <div class="col-md-6 border-end">
+                <img :src="notice.image" class="img-fluid" alt="...">
+              </div>
+              <div class="col-md-6">
+                <div class="card-body">
+                  <h3 class="card-title" :style="{ color: notice.textColor }"><b>{{ notice.title }}</b></h3>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </template>
+    </div><!-- container end -->
+</HotRecommend>
+  <!-- 我的頁尾開始 -->
+  <template>
+    <Footer>
+      <div class="b-example-divider"></div>
+      <div class="mt-5 p-4 text-white text-center " style="background-image: url('img/footer.png');" data-bs-theme="dark">
+        <div class="container  mt-5">
+          <footer class="py-5 mt-5">
+            <div class="row  mt-5 ">
+              <div class="col-6  mb-3">
+                <ul class="nav flex-column">
+                  <li class="nav-item mb-2 text-start">
+                    <h5><b>聯絡我們</b></h5>
+                  </li>
+                  <br>
+                  <li class="nav-item mb-2 text-start">
+                    <h6>營業時間｜{{ businessHours }}</h6>
+                  </li>
+                  <li class="nav-item mb-2 text-start">
+                    <h6>地址｜{{ address }}</h6>
+                  </li>
+                  <li class="nav-item mb-2 text-start">
+                    <h6>客服信箱｜{{ email }}</h6>
+                  </li>
+                  <li class="nav-item mb-2 text-start">
+                    <h6>客服電話｜{{ phone }}</h6>
+                  </li>
+                </ul>
+              </div>
+              <div class="col-md-6 ">
+                <form>
+                  <div class="text-start">
+                    <h5><b>訂閱電子報</b></h5>
+                  </div>
+                  <div class="input-group mb-3">
+                    <label for="newsletter1" class="visually-hidden">訂閱電子報信箱</label>
+                    <input type="text" class="form-control rounded-start" placeholder="訂閱電子報信箱"
+                      aria-label="Recipient's username" aria-describedby="button-addon2">
+                    <button class="btn btn-outline-light " type="button" id="button-addon2">訂閱</button>
+                  </div>
+                  <div>
+                    <ul class="list-unstyled d-flex">
+                      <li class="ms-0"><img src="img/JCB.png" class="img-fluid img-thumbnail" alt="..."></a></li>
+                      <li class="ms-0"><img src="img/VISA.png" class="img-fluid img-thumbnail" alt="..."></a></li>
+                      <li class="ms-0"><img src="img/MasterCard.png" class="img-fluid img-thumbnail" alt="..."></a></li>
+                    </ul>
+                  </div>
+                </form>
+              </div>
+            </div>
+            <div class="d-flex flex-column flex-sm-row justify-content-between py-4 my-4 border-top">
+              <p>&copy; {{ currentYear }} 阿米拉工作室股份有限公司</p>
+            </div>
+          </footer>
+        </div>
+      </div>
+    </Footer>
+  </template>
+  </div>
+  <script>
+  
+    // 建立 Vue 實例並設置選項
+    new Vue({
+      el: '#app', // 指定 Vue 實例控制的元素
+      data() {
+        return {
+          PromotionalMessage: '歡慶阿米拉品牌月！全館 $599 享免運！', // 定義數據
+          headerImages: [ // 動態輪播圖片數據
+            { src: 'img/header01.png' },
+            { src: 'img/header02.png' },
+            { src: 'img/header03.png' }
+          ],
+          NewProducts: [
+            { src: 'img/disney01.png' },
+            { src: 'img/disney02.png' },
+            { src: 'img/disney03.png' },
+            { src: 'img/disney04.png' },
+            { src: 'img/disney05.png' }
+          ],
+          advertisements: [
+            {
+              image: "img/advertise01.png",
+              iconClass: "bonesbuy",
+              title: "關節和情緒保健",
+              link: "bonesbuy.html"
+            },
+            {
+              image: "img/advertise02.png",
+              iconClass: "bodybuy",
+              title: "身體的相關保健",
+              link: "bodybuy.html"
+            },
+            {
+              image: "img/advertise03.png",
+              iconClass: "eyesbuy",
+              title: "眼睛和皮膚保健",
+              link: "eyesbuy.html"
+            }
+          ],
+          showCartMessage: false,
+          products: [
+        {
+          product_id:1,
+          name: '陪心寵糧泌尿道紓壓保健',
+          price: 450,
+          image: 'img/new01.png',
+          quantity: 1
+        },
+        {
+          product_id:2,
+          name: '汪喵星球體態管理益生菌',
+          price: 650,
+          image: 'img/new02.png',
+          quantity: 1
+        },
+        {
+          product_id:3,
+          name: '木入森犬寶變不臭益生菌',
+          price: 550,
+          image: 'img/new03.png',
+          quantity: 1
+        },
+        {
+          product_id:4,
+          name: '毛孩時代心臟專科保健粉',
+          price: 720,
+          image: 'img/new04.png',
+          quantity: 1
+        }
+      ],
+      hotProducts: [
+      {
+        product_id:1,
+        name: '汪喵星球腸胃益生菌',
+        price: 650,
+        image: 'img/hot01.png',
+        quantity: 1
+      },
+      {
+        product_id:2,
+        name: '法國法典抗焦慮口服液',
+        price: 650,
+        image: 'img/hot02.png',
+        quantity: 1
+      },
+      {
+        product_id:3,
+        name: '自然食綜合完整型營養粉',
+        price: 810,
+        image: 'img/hot03.png',
+        quantity: 1
+      },
+      {
+        product_id:4,
+        name: '陪心寵糧眼睛保健葉黃素',
+        price: 420,
+        image: 'img/hot04.png',
+        quantity: 1
+      }
+    ],
+      testimonials: [
+        {
+          name: '迪多',
+          review: '其實本來也不懂要幫迪多買什麼保健食品，想說迪多還是小噴油呀～保健食品還不需要吧？只會弄個基本的預防針、狂犬、心絲蟲等等⋯這次使用到『AMILA』的產品才發現保健食品是不容忽視的！',
+          image: 'img/good01.png'
+        },
+        {
+          name: '亞克路',
+          review: '這陣子天氣轉涼，亞克路每天的便便有成形欸！以往都會軟便個好幾天，麻麻回想一下，應該是亞克路從 9 月底開始吃益生菌的關係~',
+          image: 'img/good02.png'
+        },
+        {
+          name: '吉吉',
+          review: '吉吉試吃亮毛護膚鱉蛋粉的這幾天下來便便都很正常，皮膚狀況也維持的不錯!是狗狗保護皮膚的好產品喔~',
+          image: 'img/good03.png'
+        },
+        {
+          name: '木靈',
+          review: '當毛孩到達一定的年紀時，多少都會出現眼部的毛病。特別在老齡犬貓的眼睛出現輕度混濁前就要開始注補充眼睛保養的營養素，當眼睛問題出現病變之後經常是不可逆的，這種時候保健食品完全是木靈的救星!',
+          image: 'img/good04.png'
+        }
+      ],
+      brands: [
+        { image: "img/brand01.png" },
+        { image: "img/brand02.png" },
+        { image: "img/brand03.png" },
+        { image: "img/brand04.png" },
+        { image: "img/brand05.png" },
+        { image: "img/brand06.png" }
+      ],
+      notices: [
+        { image: "img/Notice01.png", title: "滿千免運", textColor: "rgb(74, 56, 40)" },
+        { image: "img/Notice02.png", title: "品質保證", textColor: "rgb(74, 56, 40)" },
+        { image: "img/Notice03.png", title: "快速配送", textColor: "rgb(74, 56, 40)" },
+        { image: "img/Notice04.png", title: "線上客服", textColor: "rgb(74, 56, 40)" }
+      ],
+      businessHours: "周一至周五 09：00 - 16：30",
+      address: "臺中市南屯區公益路二段51號(國泰公益大樓)",
+      email: "amila@gmail.com",
+      phone: "(04)2242-1717 #263",
+      currentYear: new Date().getFullYear()
+        };
+      },
+      
+      mounted() {
+
+        this.$nextTick(() => {
+          AOS.init({
+            offset: 100,
+            duration: 600,
+            easing: 'ease-in-out',
+            delay: 100,
+            once: false
+          });
+          AOS.refresh();
+        });
+
+        // 選擇所有具有 "hover" 類別的元素，並為它們添加滑鼠離開事件監聽器
+        document.querySelectorAll(".hover").forEach(element => {
+          element.addEventListener('mouseleave', () => {
+            element.classList.remove("hover");
+          });
+        });
+
+        // 在 Vue 實例掛載後執行的代碼
+        this.handleScroll(); // 呼叫 handleScroll 方法，初始化滾動事件處理程序
+
+        // 使用原生 JavaScript 監聽點擊事件
+        const self = this; // 將 Vue 實例存儲在變數中以便在匿名函數中訪問
+        const addToCartButtons = document.querySelectorAll('.btn-outline-dark');
+        addToCartButtons.forEach((button) => {
+          button.addEventListener('click', function(event) {
+            const productId = this.getAttribute('data-product-id'); // 使用原生 JavaScript 獲取屬性值
+            self.displayInModal(productId);
+          });
+        });
+      },
+
+      methods: {
+        
+        handleScroll() {
+          // 滾動事件處理程序
+          let prevScrollpos = window.pageYOffset; // 儲存先前的捲動位置
+          let backToTopBtn = document.getElementById("backToTopBtn"); // 獲取回到頂部按鈕元素
+  
+          window.addEventListener("scroll", () => {
+            // 監聽滾動事件
+            let currentScrollPos = window.pageYOffset; // 當前捲動位置
+  
+            if ((currentScrollPos > 100 && currentScrollPos !== 0) && prevScrollpos > currentScrollPos) {
+              // 判斷是否顯示回到頂部按鈕
+              backToTopBtn.style.opacity = "1"; // 顯示按鈕
+            } else {
+              backToTopBtn.style.opacity = "0"; // 隱藏按鈕
+            }
+  
+            prevScrollpos = currentScrollPos; // 更新先前捲動位置
+          });
+  
+          backToTopBtn.addEventListener("click", () => {
+            // 監聽回到頂部按鈕的點擊事件
+            this.scrollToTop(); // 呼叫 scrollToTop 方法，實現滾動到頂部的功能
+          });
+        },
+        scrollToTop() {
+          // 捲動到頂部的方法
+          window.scrollTo({
+            top: 0,
+            behavior: "smooth" // 使用平滑滾動效果
+          });
+        },
+        displayInModal(productId, productList) {
+        // 將 productId 轉換為數字形式
+        const productIdNumber = parseInt(productId);
+        // 根據產品 ID 尋找對應的產品資料
+        const item = productList.find(product => product.product_id === productIdNumber);
+        // 確認找到了對應的產品
+        
+        if (item) {
+          // 更新模態視窗中的圖片、標題和價格
+          alert(JSON.stringify(item))
+          this.modalItem = item;
+          
+        } 
+},
+
+        increaseQuantity(item) {
+          item.quantity = item.quantity ? item.quantity + 1 : 1;
+        },
+
+        decreaseQuantity(item) {
+          if (item.quantity && item.quantity > 1) {
+            item.quantity--;
+          }
+        },
+
+        getQuantity(item) {
+          return item.quantity || 1;
+        },
+
+        addToCart(item) {
+          // 將商品加入購物車的操作
+          const modalTitle = item.name;
+          const modalPrice = item.price;
+          const quantity = item.quantity;
+          const cartItems = JSON.parse(localStorage.getItem('cartItems')) || [];
+          cartItems.push({
+            title: modalTitle,
+            price: modalPrice,
+            quantity: quantity
+          });
+          // const sum = quantity * modalPrice
+          // const message = `已成功將 ${item.name} 加入購物車，價格為 ${item.price}*${item.quantity}=${sum}`;
+          // alert(JSON.stringify(cartItems));
+          // 顯示加入購物車訊息
+          localStorage.setItem('cartItems', JSON.stringify(cartItems));
+          this.updateCartItemCount('.cart-badge-form');
+          this.updateCartItemCount('.cart-badge-nav');
+          this.showCartMessage = true;
+          
+          // 一段時間後隱藏訊息（例如：1秒後）
+          setTimeout(() => {
+            this.showCartMessage = false;
+            const modalId = '#exampleModal_' + item.product_id;
+            $(modalId).modal('hide');
+          }, 1000);
+        },
+        updateCartItemCount(selector) {
+    const cartItems = JSON.parse(localStorage.getItem('cartItems')) || [];
+    let totalQuantity = 0;
+
+    cartItems.forEach(function (cartItem) {
+      totalQuantity += parseInt(cartItem.quantity);
+    });
+
+    const badgeElement = document.querySelector(selector);
+    if (badgeElement) {
+      badgeElement.textContent = totalQuantity;
+    }
+  },
+      }  
+    });
+  </script>
+  
+  
+
+
+
+<script>
+  // 獲取 Vue 組件的容器元素
+  const navigationElement = document.getElementById('navigation');
+
+  // 創建 Vue 實例並掛載到容器元素上
+  new Vue({
+    render: h => h(NavigationBar)
+  }).$mount(navigationElement);
+</script>
+
+
+</body>
+
+
+
+</html>
