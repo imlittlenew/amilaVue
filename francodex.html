@@ -106,7 +106,7 @@
                               <p class="card-text"><b>NT$ {{ item.price }}</b></p>
                             </div>
                             <button type="button" class="btn btn-outline-dark mt-auto" data-bs-toggle="modal"
-                                    :data-bs-target="'#exampleModal_' + item.product_id">
+                                    :data-bs-target="'#exampleModal_' + item.product_id" @click="checkLoginAndAddToCart">
                               立即購買
                             </button>
                             <div class="modal fade" :id="'exampleModal_' + item.product_id" tabindex="-1"
@@ -276,6 +276,16 @@
               },
         
               methods: {
+                checkLoginAndAddToCart() {
+                const isLoggedIn = localStorage.getItem('isLoggedIn');
+                if (isLoggedIn) {
+                  // 已經登入，可以將商品添加到購物車中
+                  addToCart();
+                } else {
+                  // 未登入，導向登入頁面
+                  window.location.href = '/user.html'; // 假設登入頁面的 URL 是 '/login'
+                }
+              },
                 navigateTo(url) {
                     window.location.href = url;
                 },

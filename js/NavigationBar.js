@@ -55,7 +55,9 @@ const NavigationBar = {
               <span class="badge bg-dark rounded-pill cart-badge-nav" id="cartBadge">{{ cartItemCount }}</span>
             </a>
             <!-- 用戶圖標 -->
-            <a :href="'user.html'" class="btn text-nowrap"><img src="img/user.png" class="d-block img-fluid" alt="user"></a>
+              <a v-if="isLoggedIn" class="btn text-nowrap" @click="logout"><img src="img/logout.png" class="d-block img-fluid" alt="logout"></a>
+              <!-- 如果未登入，顯示登入鏈接 -->
+              <a v-else :href="'user.html'" class="btn text-nowrap"><img src="img/user.png" class="d-block img-fluid" alt="user"></a>
           </form>
         </div>
       </div>
@@ -65,13 +67,31 @@ const NavigationBar = {
     return {
       searchTerm: "",
       cartItemCount: 0,
+      isLoggedIn: false
     };
   },
   created() {
     // 在組件創建時，獲取購物車項目數量
     this.cartItemCount = this.getCartItemCount();
+
+    // 檢查本地存儲中的登入狀態
+    const isLoggedIn = localStorage.getItem('isLoggedIn');
+    if (isLoggedIn) {
+      // 如果已登入，更新登入狀態
+      this.isLoggedIn = true;
+    }
   },
   methods: {
+
+    logout() {
+      // 清除整个本地存储
+      localStorage.clear();
+      // 更新登入状态
+      this.isLoggedIn = false;
+      // 在此处導向登出頁面，或者執行其他操作
+      window.location.href = '/logout'; // 假設登出頁面的 URL 是 '/logout'
+    },
+    
     toggleSearch(event) {
       event.preventDefault(); // 阻止默认行为
       const searchOverlay = document.getElementById('searchOverlay');

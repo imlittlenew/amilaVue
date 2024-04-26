@@ -89,9 +89,9 @@
     animation: slideOut 0.5s forwards;
 }
 
-#loginSuccessAlert {
+#SuccessAlert {
     /* 自訂成功訊息的樣式 */
-    display: none;
+    /* display: none; */
     color: #FFFFFF;
     position: fixed;
     font-weight: bolder;
@@ -106,41 +106,17 @@
     font-size: 20px;
 }
 
-#registerSuccessAlert {
-    /* 自訂成功訊息的樣式 */
-    display: none;
-    color: #FFFFFF;
-    position: fixed;
-    font-weight: bolder;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    background: #000000c2;
-    padding: 20px;
-    z-index: 9999;
-    /* border: 5px solid rgb(232, 20, 20); */
-    border-radius: 20px;
-    font-size: 20px;
-}
-
-#forgotPasswordSuccessAlert {
-    /* 自訂成功訊息的樣式 */
-    display: none;
-    color: #FFFFFF;
-    position: fixed;
-    font-weight: bolder;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    background: #000000c2;
-    padding: 20px;
-    z-index: 9999;
-    /* border: 5px solid rgb(232, 20, 20); */
-    border-radius: 20px;
-    font-size: 20px;
-}
 
 .dark-link {
     color: black;
     text-decoration: none;
+}
+
+.toast {
+    border: 6px dashed #181b1e !important; /* 设置边框为黑色虚线，粗度为2 */
+}
+
+#toggleRegister , #toggleforgot , #toggleLogin{
+    background-color: #FFF ;
+    border: 0px solid;
 }

@@ -216,149 +216,149 @@
 // 登入註冊
 
 // JavaScript
-document.addEventListener("DOMContentLoaded", function () {
-  const toggleRegister = document.getElementById("toggleRegister");
-  const toggleLogin = document.getElementById("toggleLogin");
-  const toggleforgot = document.getElementById("toggleforgot");
-  const loginForm = document.getElementById("loginForm");
-  const forgotPasswordForm = document.getElementById("forgotPasswordForm");
-  const registerForm = document.getElementById("registerForm");
+// document.addEventListener("DOMContentLoaded", function () {
+//   const toggleRegister = document.getElementById("toggleRegister");
+//   const toggleLogin = document.getElementById("toggleLogin");
+//   const toggleforgot = document.getElementById("toggleforgot");
+//   const loginForm = document.getElementById("loginForm");
+//   const forgotPasswordForm = document.getElementById("forgotPasswordForm");
+//   const registerForm = document.getElementById("registerForm");
 
-  // 初始状态隐藏注册表单
-  registerForm.classList.add("d-none");
-  forgotPasswordForm.classList.add("d-none");
-  // 点击"忘記密碼"超链接时显示登入表单
-  toggleforgot.addEventListener("click", function (event) {
-    event.preventDefault();
-    loginForm.style.display = "none";
-    forgotPasswordForm.classList.remove("d-none");
-  });
-  // 点击"免费注册"超链接时显示注册表单
-  toggleRegister.addEventListener("click", function (event) {
-    event.preventDefault();
-    loginForm.style.display = "none";
-    registerForm.classList.remove("d-none");
-    registerForm.classList.add("slideIn");
-  });
+//   // 初始状态隐藏注册表单
+//   registerForm.classList.add("d-none");
+//   forgotPasswordForm.classList.add("d-none");
+//   // 点击"忘記密碼"超链接时显示登入表单
+//   toggleforgot.addEventListener("click", function (event) {
+//     event.preventDefault();
+//     loginForm.style.display = "none";
+//     forgotPasswordForm.classList.remove("d-none");
+//   });
+//   // 点击"免费注册"超链接时显示注册表单
+//   toggleRegister.addEventListener("click", function (event) {
+//     event.preventDefault();
+//     loginForm.style.display = "none";
+//     registerForm.classList.remove("d-none");
+//     registerForm.classList.add("slideIn");
+//   });
 
-  // 点击"登入"超链接时显示登入表单
-  toggleLogin.addEventListener("click", function (event) {
-    event.preventDefault();
-    registerForm.classList.remove("slideIn");
-    registerForm.classList.add("slideOut");
-    loginForm.classList.remove("slideOut");
-    loginForm.classList.add("slideIn");
-  });
-
-
-
-  // 动画结束时隐藏注册表单
-  registerForm.addEventListener("animationend", function () {
-    if (registerForm.classList.contains("slideOut")) {
-      registerForm.classList.add("d-none");
-      registerForm.classList.remove("slideOut");
-      loginForm.style.display = "block";
-    }
-  });
-  //忘記密碼驗證
-  forgotPasswordForm.addEventListener('submit', function (event) {
-    event.preventDefault();
-
-    const forgotPasswordEmail = document.getElementById('forgotPasswordEmail');
-    const email = forgotPasswordEmail.value.trim();
-    if (!isValidEmail(email)) {
-      alert('請輸入有效的郵件地址');
-      return;
-    }
-
-    // Display login success message and redirect after a delay
-    showSuccessMessage('forgotPasswordSuccessAlert');
-
-    // 延迟3秒后重定向到 index.html
-    setTimeout(function () {
-      forgotPasswordForm.classList.add("d-none");
-      loginForm.style.display = 'block';
-
-    }, 1000);
-  });
+//   // 点击"登入"超链接时显示登入表单
+//   toggleLogin.addEventListener("click", function (event) {
+//     event.preventDefault();
+//     registerForm.classList.remove("slideIn");
+//     registerForm.classList.add("slideOut");
+//     loginForm.classList.remove("slideOut");
+//     loginForm.classList.add("slideIn");
+//   });
 
 
-  //表單驗證
-  loginForm.addEventListener('submit', function (event) {
-    event.preventDefault();
 
-    const emailInput = document.getElementById('loginEmail');
-    const email = emailInput.value.trim();
-    if (!isValidEmail(email)) {
-      alert('請輸入有效的郵件地址');
-      return;
-    }
+//   // 动画结束时隐藏注册表单
+//   registerForm.addEventListener("animationend", function () {
+//     if (registerForm.classList.contains("slideOut")) {
+//       registerForm.classList.add("d-none");
+//       registerForm.classList.remove("slideOut");
+//       loginForm.style.display = "block";
+//     }
+//   });
+//   //忘記密碼驗證
+//   forgotPasswordForm.addEventListener('submit', function (event) {
+//     event.preventDefault();
 
-    // Display login success message and redirect after a delay
-    showSuccessMessage('loginSuccessAlert');
+//     const forgotPasswordEmail = document.getElementById('forgotPasswordEmail');
+//     const email = forgotPasswordEmail.value.trim();
+//     if (!isValidEmail(email)) {
+//       alert('請輸入有效的郵件地址');
+//       return;
+//     }
 
-    // 延迟3秒后重定向到 index.html
-    setTimeout(function () {
-      window.location.href = 'index.html';
-    }, 500); // 3000 毫秒 = 3 秒
-  });
+//     // Display login success message and redirect after a delay
+//     showSuccessMessage('forgotPasswordSuccessAlert');
 
-  function isValidEmail(email) {
-    const emailPattern = /\S+@\S+\.\S+/;
-    return emailPattern.test(email);
-  }
-  registerForm.addEventListener('submit', function (event) {
-    event.preventDefault();
+//     // 延迟3秒后重定向到 index.html
+//     setTimeout(function () {
+//       forgotPasswordForm.classList.add("d-none");
+//       loginForm.style.display = 'block';
 
-    const emailInput = document.getElementById('floatingInput');
-    const passwordInput = document.getElementById('floatingPassword');
+//     }, 1000);
+//   });
 
-    const email = emailInput.value.trim();
-    const password = passwordInput.value.trim();
 
-    // 邮箱验证
-    if (!isValidEmail(email)) {
-      alert('請輸入有效的郵件地址');
-      return;
-    }
+//   //表單驗證
+//   loginForm.addEventListener('submit', function (event) {
+//     event.preventDefault();
 
-    // Save registered email and password to localStorage
-    localStorage.setItem('registeredEmail', email);
-    localStorage.setItem('registeredPassword', password);
+//     const emailInput = document.getElementById('loginEmail');
+//     const email = emailInput.value.trim();
+//     if (!isValidEmail(email)) {
+//       alert('請輸入有效的郵件地址');
+//       return;
+//     }
 
-    // Display register success message without redirecting
-    showSuccessMessage('registerSuccessAlert', 'login-signup.html');
-  });
+//     // Display login success message and redirect after a delay
+//     showSuccessMessage('loginSuccessAlert');
 
-  // Function to display success message and redirect after a delay
-  function showSuccessMessage(elementId) {
-    const successAlert = document.getElementById(elementId);
-    successAlert.style.display = 'block';
+//     // 延迟3秒后重定向到 index.html
+//     setTimeout(function () {
+//       window.location.href = 'index.html';
+//     }, 500); // 3000 毫秒 = 3 秒
+//   });
 
-    setTimeout(function () {
-      successAlert.style.display = 'none';
-      loginForm.classList.remove("slideIn");
-      registerForm.classList.contains("slideOut");
-      if (registerForm.classList.contains("slideOut")) {
-        registerForm.classList.add("d-none");
-        registerForm.classList.remove("slideOut");
-      }
-      // 顯示登入表單並自動填寫憑證
-      loginForm.style.display = 'block';
-      registerForm.classList.add("d-none");
-      const emailInput = document.getElementById('loginEmail');
-      const passwordInput = document.getElementById('loginPassword');
-      const rememberedEmail = localStorage.getItem('registeredEmail');
-      const rememberedPassword = localStorage.getItem('registeredPassword');
+//   function isValidEmail(email) {
+//     const emailPattern = /\S+@\S+\.\S+/;
+//     return emailPattern.test(email);
+//   }
+//   registerForm.addEventListener('submit', function (event) {
+//     event.preventDefault();
 
-      if (rememberedEmail && rememberedPassword) {
-        emailInput.value = rememberedEmail;
-        passwordInput.value = rememberedPassword;
-      }
+//     const emailInput = document.getElementById('floatingInput');
+//     const passwordInput = document.getElementById('floatingPassword');
 
-    }, 1000);
-  }
-});
+//     const email = emailInput.value.trim();
+//     const password = passwordInput.value.trim();
+
+//     // 邮箱验证
+//     if (!isValidEmail(email)) {
+//       alert('請輸入有效的郵件地址');
+//       return;
+//     }
+
+//     // Save registered email and password to localStorage
+//     localStorage.setItem('registeredEmail', email);
+//     localStorage.setItem('registeredPassword', password);
+
+//     // Display register success message without redirecting
+//     showSuccessMessage('registerSuccessAlert', 'login-signup.html');
+//   });
+
+//   // Function to display success message and redirect after a delay
+//   function showSuccessMessage(elementId) {
+//     const successAlert = document.getElementById(elementId);
+//     successAlert.style.display = 'block';
+
+//     setTimeout(function () {
+//       successAlert.style.display = 'none';
+//       loginForm.classList.remove("slideIn");
+//       registerForm.classList.contains("slideOut");
+//       if (registerForm.classList.contains("slideOut")) {
+//         registerForm.classList.add("d-none");
+//         registerForm.classList.remove("slideOut");
+//       }
+//       // 顯示登入表單並自動填寫憑證
+//       loginForm.style.display = 'block';
+//       registerForm.classList.add("d-none");
+//       const emailInput = document.getElementById('loginEmail');
+//       const passwordInput = document.getElementById('loginPassword');
+//       const rememberedEmail = localStorage.getItem('registeredEmail');
+//       const rememberedPassword = localStorage.getItem('registeredPassword');
+
+//       if (rememberedEmail && rememberedPassword) {
+//         emailInput.value = rememberedEmail;
+//         passwordInput.value = rememberedPassword;
+//       }
+
+//     }, 1000);
+//   }
+// });
 
 // document.addEventListener('DOMContentLoaded', function () {
 //   const addToCartButton = document.getElementById('addToCartBtn');
@@ -586,10 +586,3 @@ function showSearchOverlay() {
 //     }
 //   });
 // }
-
-
-
-
-
-
-

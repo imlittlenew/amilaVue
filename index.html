@@ -415,19 +415,19 @@
               image: "img/advertise01.png",
               iconClass: "bonesbuy",
               title: "關節和情緒保健",
-              link: "bonesbuy.html"
+              link: "bonesAndMood.html"
             },
             {
               image: "img/advertise02.png",
               iconClass: "bodybuy",
               title: "身體的相關保健",
-              link: "bodybuy.html"
+              link: "bodyErelated.html"
             },
             {
               image: "img/advertise03.png",
               iconClass: "eyesbuy",
               title: "眼睛和皮膚保健",
-              link: "eyesbuy.html"
+              link: "eyesAndSkin.html"
             }
           ],
           showCartMessage: false,
@@ -603,18 +603,24 @@
           });
         },
         displayInModal(productId, productList) {
-        // 將 productId 轉換為數字形式
-        const productIdNumber = parseInt(productId);
-        // 根據產品 ID 尋找對應的產品資料
-        const item = productList.find(product => product.product_id === productIdNumber);
-        // 確認找到了對應的產品
-        
-        if (item) {
-          // 更新模態視窗中的圖片、標題和價格
-          alert(JSON.stringify(item))
-          this.modalItem = item;
-          
-        } 
+          const isLoggedIn = localStorage.getItem('isLoggedIn');
+                if (isLoggedIn) {
+                  // 已經登入，可以將商品添加到購物車中
+                  // 將 productId 轉換為數字形式
+                  const productIdNumber = parseInt(productId);
+                  // 根據產品 ID 尋找對應的產品資料
+                  const item = productList.find(product => product.product_id === productIdNumber);
+                  // 確認找到了對應的產品
+                  
+                  if (item) {
+                    // 更新模態視窗中的圖片、標題和價格
+                    this.modalItem = item;
+                    
+                  } 
+                } else {
+                  // 未登入，導向登入頁面
+                  window.location.href = '/user.html'; // 假設登入頁面的 URL 是 '/login'
+                }
 },
 
         increaseQuantity(item) {
@@ -659,18 +665,18 @@
           }, 1000);
         },
         updateCartItemCount(selector) {
-    const cartItems = JSON.parse(localStorage.getItem('cartItems')) || [];
-    let totalQuantity = 0;
+          const cartItems = JSON.parse(localStorage.getItem('cartItems')) || [];
+          let totalQuantity = 0;
 
-    cartItems.forEach(function (cartItem) {
-      totalQuantity += parseInt(cartItem.quantity);
-    });
+          cartItems.forEach(function (cartItem) {
+            totalQuantity += parseInt(cartItem.quantity);
+          });
 
-    const badgeElement = document.querySelector(selector);
-    if (badgeElement) {
-      badgeElement.textContent = totalQuantity;
-    }
-  },
+          const badgeElement = document.querySelector(selector);
+          if (badgeElement) {
+            badgeElement.textContent = totalQuantity;
+          }
+        },
       }  
     });
   </script>
