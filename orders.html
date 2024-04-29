@@ -2,17 +2,17 @@
 <html lang="en">
 
 <head>
-  <link href="img/logo.png" rel="shortcut icon" />
-  <title>AMILA</title>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link href="css/bootstrap.min.css" rel="stylesheet">
-  <link href="css/mycss.css" rel="stylesheet">
-  <link href="css/aos.css" rel="stylesheet">
-  <script src="https://cdn.jsdelivr.net/npm/vue@2"></script>
-  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-  <script src="js/NavigationBar.js"></script>
-  <script src="js/bootstrap.bundle.min.js"></script>
+    <link href="img/logo.png" rel="shortcut icon" />
+    <title>AMILA</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/cart.css" rel="stylesheet">
+    <link href="css/mycss.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/vue@2"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="js/NavigationBar.js"></script>
+    <script src="js/bootstrap.bundle.min.js"></script>
 </head>
 
 <body>
@@ -31,44 +31,29 @@
     <!-- 導覽列 -->
     <div id="navigation"></div>
     <div class="container mt-5">
-      <div class="row">
-        <div class="col-12">
-          <nav aria-label="breadcrumb">
-            <ol class="breadcrumb">
-              <li class="breadcrumb-item"><a href="index.html" class="link-dark">首頁</a></li>
-              <li class="breadcrumb-item"><a href="orderProblem.html" class="link-dark">常見問題</a></li>
-              <li class="breadcrumb-item active" aria-current="page">訂單問題</li>
-            </ol>
-          </nav>
-        </div>
-      </div>
-    </div>
-    <div class="container">
-      <div class="row">
-        <div class="col-md-3">
-          <div class="list-group list-group-flush">
-            <a href="orderProblem.html" class="list-group-item list-group-item-action text-start">訂單問題</a>
-            <a href="returnOrExchange.html" class="list-group-item list-group-item-action text-start">退換貨須知</a>
-            <a href="delivery.html" class="list-group-item list-group-item-action list-group-item-dark text-start">運送政策</a>
+      <h1 class="fw-bold mb-3">歷史訂單</h1>
+      <div class="bg-body-tertiary p-5 rounded mt-3">
+        <div class="row mt-2" v-for="(order, orderIndex) in items" :key="orderIndex">
+          <div class="col-1"><img src="img/order.png" class="d-block img-fluid" alt="order" /></div>
+          <div class="col-1"></div>
+          <div class="col-10">
+              <h3>訂單明細</h3>
+              <p class="text-secondary">{{order.totalQuantity}}件商品，共 NT${{order.totalPrice}} 訂購於 {{order.orderDate}} 的 {{order.orderTime}}</p>
           </div>
-        </div>
-        <div class="col-md-9">
-          <!-- 開始 -->
-          <div class="row row-cols-1 row-cols-md-1 g-3">
-            <div class="col" v-for="(faq, index) in faqs" :key="index">
-              <h5>
-                <a class="list-group-item list-group-item-action text-start" data-bs-toggle="collapse"
-                  :href="'#multiCollapseExample' + (index + 1)" role="button" :aria-expanded="false"
-                  :aria-controls="'multiCollapseExample' + (index + 1)">{{ faq.question }}</a>
-              </h5>
-              <div class="collapse multi-collapse" :id="'multiCollapseExample' + (index + 1)">
-                <div class="card card-body no-border">
-                  <h6 v-html="faq.answer"></h6>
+          <div class="col-12 my-3">
+            <div class="my-2" v-for="(item, itemIndex) in order.items" :key="itemIndex">
+              <div class="row my-3">
+                <div class="col-1 text-center">
+                  <h5 class="border border-secondary py-2">{{ item.quantity }}</h5>
+                </div>
+                <div class="col-1"></div>
+                <div class="col-8 py-2">
+                  <h4>{{ item.title }}</h4>
                 </div>
               </div>
             </div>
           </div>
-          <!-- 結束 -->
+          <hr />
         </div>
       </div>
     </div>
@@ -131,7 +116,6 @@
     </template>
       <!-- 我的頁尾結束 -->
   </div>
-
   <script>
     new Vue({
       el: '#app',
@@ -143,33 +127,46 @@
           email: "amila@gmail.com",
           phone: "(04)2242-1717 #263",
           currentYear: new Date().getFullYear(),
-          faqs: [
-            {
-                question: '運費計算及免運門檻？',
-                answer: '宅配&超取運費為 NT$80，滿千免運。',
-            },
-            {
-                question: '我的訂單什麼時候會出貨呢?',
-                answer: '現貨商品約 3 個工作天(不含假日)安排出貨，缺貨及預購商品另計。登入官網內有訂單狀態，【已確認】表示出貨完成；【處理中】可聯繫客服詢問。',
-            },
-            {
-                question: '寄出後什麼時候會收到商品呢?',
-                answer: '宅配通常物流時程1-2天、超取約2-4天配達。補貨及預購商品則不再此範圍。',
-            },
-            {
-                question: '為何我的訂單被分開寄送?',
-                answer: '若是您訂單所訂購的品項眾多，相關人員會拆單幫您安排寄出。<br>◎提醒您：拆單配送主要是依物流實際配送時間，故不會同時送達，不便之處還請見諒!',
-            }
-        ]
-            };
+          items:[],
+          totalQuantity: 0,
+          totalPrice: 0,
+        };
+        },
+        mounted() {
+          const userData = JSON.parse(localStorage.getItem('userData'));
+          const userId = userData.userId;
+          if (userId) {
+              this.getUserOrders(userId);
+          } else {
+              console.error('發生錯誤');
+          }
+        },
+        methods: {
+          //獲取訂單資料
+          getUserOrders(userId) {
+            fetch('http://localhost:8000/userOrders', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ userId })
+            })
+            .then(response => {
+                if (response.ok) {
+                    return response.json();
+                    
+                } else {
+                    throw new Error('發生錯誤');
+                }
+            })
+            .then(data => {
+                this.items = data;
+            })
+            .catch(error => {
+                console.error('發生錯誤');
+            });
           },
-      
-      mounted() {
-        this.handleScroll();
-      },
-
-      methods: {
-        handleScroll() {
+          handleScroll() {
           // 滾動事件處理程序
           let prevScrollpos = window.pageYOffset;
           let backToTopBtn = document.getElementById("backToTopBtn");

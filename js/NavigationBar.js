@@ -1,6 +1,3 @@
-// NavigationBar.js
-
-// 定義 Vue 組件
 const NavigationBar = {
   template: `
     <nav class="navbar navbar-expand-lg navbar sticky-top shadow mt-0 mb-0 bg-body" style="background-color: white;">
@@ -23,6 +20,9 @@ const NavigationBar = {
             </li>
             <li class="nav-item">
               <a class="nav-link fw-bold fs-5" aria-current="page" :href="'aboutAmila.html'">關於阿米拉</a>
+            </li>
+            <li class="nav-item" v-if="isLoggedIn">
+              <a class="nav-link fw-bold fs-5" aria-current="page" :href="'orders.html'">歷史訂單</a>
             </li>
             <li class="nav-item dropdown">
               <a class="nav-link dropdown-toggle fw-bold fs-5" role="button" data-bs-toggle="dropdown"
@@ -50,7 +50,11 @@ const NavigationBar = {
               </div>
             </div>
             <!-- 購物車圖標 -->
-            <a :href="'cart.html'" class="btn text-nowrap" id="cartIconWrapper">
+            <a v-if="isLoggedIn" :href="'cart.html'" class="btn text-nowrap" id="cartIconWrapper">
+              <img src="img/cart.png" class="d-block img-fluid" alt="cart">
+              <span class="badge bg-dark rounded-pill cart-badge-nav" id="cartBadge">{{ cartItemCount }}</span>
+            </a>
+            <a v-else :href="'user.html'" class="btn text-nowrap" id="cartIconWrapper">
               <img src="img/cart.png" class="d-block img-fluid" alt="cart">
               <span class="badge bg-dark rounded-pill cart-badge-nav" id="cartBadge">{{ cartItemCount }}</span>
             </a>
@@ -71,31 +75,30 @@ const NavigationBar = {
     };
   },
   created() {
-    // 在組件創建時，獲取購物車項目數量
+    // 獲取購物車數量
     this.cartItemCount = this.getCartItemCount();
-
-    // 檢查本地存儲中的登入狀態
+    // 登入狀態
     const isLoggedIn = localStorage.getItem('isLoggedIn');
     if (isLoggedIn) {
-      // 如果已登入，更新登入狀態
+      // 如登入，更新狀態
       this.isLoggedIn = true;
     }
   },
   methods: {
 
     logout() {
-      // 清除整个本地存储
+      // 登出清除整個localStorage
       localStorage.clear();
-      // 更新登入状态
+      // 更新登入狀態
       this.isLoggedIn = false;
-      // 在此处導向登出頁面，或者執行其他操作
-      window.location.href = '/logout'; // 假設登出頁面的 URL 是 '/logout'
+      // 登出導向到登入頁面
+      window.location.href = 'user.html'; 
     },
     
     toggleSearch(event) {
-      event.preventDefault(); // 阻止默认行为
+      event.preventDefault();
       const searchOverlay = document.getElementById('searchOverlay');
-      searchOverlay.style.display = 'flex'; // 显示遮罩层
+      searchOverlay.style.display = 'flex';
     },
     
   
@@ -106,9 +109,8 @@ const NavigationBar = {
       new Promise(resolve => {
         setTimeout(() => {
           resolve();
-        }, 700); // 設置一個適當的延遲時間
+        }, 700);
       }).then(() => {
-        // 執行跳轉功能
         window.location.href = 'searchForProducts.html';
       });
     },

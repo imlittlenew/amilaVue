@@ -1,12 +1,11 @@
-/* my.css */
 @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+TC&display=swap');
 
-/* 其他样式 */
+
 * {
-  font-family: 'Noto Sans TC', sans-serif; /* 使用 Noto Sans TC 字体 */
+  font-family: 'Noto Sans TC', sans-serif;
 }
 
-/* 分頁 (Pagination)的CSS開始 */
+
 .pagination {
     border: none;
 }
@@ -21,23 +20,18 @@
 
 .pagination .page-link {
     text-decoration: none;
-    /* 移除默认下划线 */
     color: black;
-    /* 设置链接文本颜色为黑色 */
 }
 
 .pagination .page-link:hover {
     text-decoration: underline;
-    /* 悬停时添加下划线 */
     background-color: white;
-    /* 设置鼠标悬停时的链接文本颜色为白色 */
 }
 
 .pagination .page-link {
     text-decoration: none;
     color: black;
     background-color: white;
-    /* 设置链接背景为白色 */
 }
 
 .pagination .page-link:hover {
@@ -47,37 +41,26 @@
 
 .pagination .page-item.disabled .page-link {
     pointer-events: none;
-    /* 禁用点击事件 */
     color: gray;
-    /* 设置禁用状态下的链接文本颜色为灰色 */
     background-color: white;
-    /* 设置禁用状态下的链接背景颜色为白色 */
 }
 
-/* 分頁 (Pagination)的CSS結束 */
-
-/* Breadcrumb 開始*/
 ol.breadcrumb a {
     text-decoration: none;
 }
 
 .list-group-item {
     border: none;
-    /* 移除所有邊框 */
 }
 
-/* Breadcrumb 結束*/
 
-/* pq的card只留下底線邊框開始 */
 .no-border {
     border: none;
     border-bottom: 1px solid #dee2e6;
-    /* 添加底部边框 */
 }
 .no-border02 {
     border: none;
 }
-/* pq的card只留下底線邊框結束 */
 
 #ad {
   font-family: 'Raleway', Arial, sans-serif;
@@ -169,7 +152,6 @@ ol.breadcrumb a {
 }
 
 .cart-message {
-  /* 自訂成功訊息的樣式 */
         color: #FFFFFF;
         position: fixed;
         font-weight: bolder;
@@ -179,7 +161,6 @@ ol.breadcrumb a {
         background: #000000c2;
         padding: 20px;
         z-index: 9999;
-        /* border: 5px solid rgb(232, 20, 20); */
         border-radius: 20px;
         font-size: 20px;
       }
@@ -190,7 +171,7 @@ ol.breadcrumb a {
 
 
 #backToTopBtn {
-  display: block; /* 初始顯示按鈕 */
+  display: block;
   position: fixed;
   bottom: 20px;
   right: 20px;
@@ -200,10 +181,10 @@ ol.breadcrumb a {
   height: 50px;
   border: 0;
   background-color: transparent;
-  transition: opacity 1.0s ease; /* 添加淡入淡出效果 */
-  opacity: 0; /* 初始設置為完全透明 */
-  background-image: url('../img/top.png'); /* 設置背景圖片的路徑 */
-  background-size: cover; /* 確保圖片充滿按鈕 */
+  transition: opacity 1.0s ease;
+  opacity: 0;
+  background-image: url('../img/top.png');
+  background-size: cover;
 }
 
 
@@ -212,18 +193,17 @@ ol.breadcrumb a {
 }
 
 .line-height {
-  line-height: 1.5; /* 調整行高，可以是數字或百分比 */
+  line-height: 1.5;
 }
 
 .custom-btn {
-  padding: 15px 30px; /* 調整內邊距 */
-  font-size: 18px; /* 調整字體大小 */
-  height: 60px; /* 調整按鈕高度 */
-  width: 200px; /* 調整按鈕寬度 */
+  padding: 15px 30px;
+  font-size: 18px;
+  height: 60px;
+  width: 200px;
 }
 
 #cartSuccessAlert {
-  /* 自訂成功訊息的樣式 */
   display: none;
   color: #FFFFFF;
   position: fixed;
@@ -234,22 +214,18 @@ ol.breadcrumb a {
   background: #000000c2;
   padding: 20px;
   z-index: 9999;
-  /* border: 5px solid rgb(232, 20, 20); */
   border-radius: 20px;
   font-size: 20px;
 }
-/* 默认样式 */
 .custom-input {
-  background-color: #fff; /* 默认背景颜色 */
-  border: 1px solid #000; /* 默认边框颜色 */
-  color: #000; /* 默认文本颜色 */
+  background-color: #fff;
+  border: 1px solid #000;
+  color: #000;
 }
 
-/* 选中时的样式 */
 .custom-input:checked {
-  background-color: #000; /* 选中时的背景颜色 */
-  color: #fff; /* 选中时的文本颜色 */
-  /* 其他样式 */
+  background-color: #000;
+  color: #fff;
 }
 #cartfailAlert{
   display: none;
@@ -262,7 +238,6 @@ ol.breadcrumb a {
   background: #000000c2;
   padding: 20px;
   z-index: 9999;
-  /* border: 5px solid rgb(232, 20, 20); */
   border-radius: 20px;
   font-size: 20px;
 }
@@ -282,10 +257,8 @@ ol.breadcrumb a {
   top: -5px;
   right: -5px;
   font-size: 0.8em;
-  /* 其他样式，例如颜色、内边距等 */
 }
 
-/* 全屏搜索覆盖层 */
 .search-overlay {
   position: fixed;
   top: 0;
@@ -299,18 +272,16 @@ ol.breadcrumb a {
   z-index: 9999;
 }
 
-/* 搜索框样式 */
 .search-form {
   text-align: center;
   position: relative;
   display: inline-block;
 }
 
-/* 初始输入框样式 */
 .search-input {
   padding: 10px 10px 10px 60px;
   border-radius: 5px;
-  border: 1px solid #ccc; /* 初始边框 */
+  border: 1px solid #ccc;
   margin-bottom: 10px;
   width: 790px;
   height: 50px;
@@ -318,23 +289,21 @@ ol.breadcrumb a {
   color: #fff
 }
 
-/* 获取焦点时和有内容时的样式 */
 .search-input:focus,
 .search-input:not(:placeholder-shown) {
-  border-color: #666; /* 获取焦点或有内容时的边框颜色 */
+  border-color: #666;
 }
 
-/* 占位符样式 */
 .search-input::placeholder {
-  color: #999; /* 占位符颜色 */
+  color: #999;
 }
 
 
 .search-icon {
   position: absolute;
-  top: 44%; /* 垂直居中 */
-  left: 20px; /* 距离右侧的间距 */
-  transform: translateY(-50%); /* 上下居中 */
+  top: 44%;
+  left: 20px;
+  transform: translateY(-50%);
   width: 20px;
   height: 20px;
   cursor: pointer;

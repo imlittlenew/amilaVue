@@ -13,7 +13,6 @@
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
   <script src="js/NavigationBar.js"></script>
   <script src="js/aos.js"></script>
-  <script src="js/myjs.js"></script>
   <script src="js/bootstrap.bundle.min.js"></script>
 </head>
 
@@ -26,7 +25,6 @@
         <div class="row mx-auto">
           <div class="col-12 ">
             <span class="navbar-brand mb-0 fs-6 text-light"><b>{{PromotionalMessage}}</b></span>
-  
           </div>
         </div>
         <!-- Content here -->
@@ -35,91 +33,83 @@
     <!-- 導覽列 -->
     <div id="navigation"></div>
 
-  <div class="container mt-5">
-    <div class="row">
-      <div class="col-md-12">
-        <nav aria-label="breadcrumb">
-          <ol class="breadcrumb">
-            <li class="breadcrumb-item"><a href="index.html" class="link-dark">首頁</a></li>
-            <li class="breadcrumb-item active" aria-current="page">毛孩保健知識</li>
-          </ol>
-        </nav>
-      </div>
-    </div>
-
-    
-    <template>
-      <!-- 知識01 -->
-      <div class="row row-cols-1 row-cols-md-2 mb-5 ">
-        <div class="col-md-6 mt-5 mb-5" v-bind:data-aos="knowledge01.animation1" :data-aos-easing="knowledge01.easing1" :data-aos-duration="knowledge01.duration1">
-          <h1 class="mb-5"><b>{{ knowledge01.title1 }}</b></h1>
-          <img :src="knowledge01.image1" class="card-img-top" alt="...">
-        </div>
-        <div class="col-md-6 mb-5" v-bind:data-aos="knowledge01.animation2" :data-aos-duration="knowledge01.duration2">
-          <img :src="knowledge01.image2" class="card-img-top" alt="...">
-          <h1 class="mb-5 mt-5"><b>{{ knowledge01.title2 }}</b></h1>
-          <h5 class="line-height">{{ knowledge01.content }}</h5>
+    <div class="container mt-5">
+      <div class="row">
+        <div class="col-md-12">
+          <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+              <li class="breadcrumb-item"><a href="index.html" class="link-dark">首頁</a></li>
+              <li class="breadcrumb-item active" aria-current="page">毛孩保健知識</li>
+            </ol>
+          </nav>
         </div>
       </div>
-    
-      <!-- 知識02 -->
-      <div class="row row-cols-1 row-cols-md-2 mt-5">
-        <div class="col-md-12" v-bind:data-aos="knowledge02.animation1" :data-aos-easing="knowledge02.easing1" :data-aos-duration="knowledge02.duration1">
-          <img :src="knowledge02.titleImage" class="card-img-top img-fluid ktitle mb-5" alt="...">
+      <template>
+        <!-- 知識01 -->
+        <div class="row row-cols-1 row-cols-md-2 mb-5 ">
+          <div class="col-md-6 mt-5 mb-5" v-bind:data-aos="knowledge01.animation1" :data-aos-easing="knowledge01.easing1" :data-aos-duration="knowledge01.duration1">
+            <h1 class="mb-5"><b>{{ knowledge01.title1 }}</b></h1>
+            <img :src="knowledge01.image1" class="card-img-top" alt="...">
+          </div>
+          <div class="col-md-6 mb-5" v-bind:data-aos="knowledge01.animation2" :data-aos-duration="knowledge01.duration2">
+            <img :src="knowledge01.image2" class="card-img-top" alt="...">
+            <h1 class="mb-5 mt-5"><b>{{ knowledge01.title2 }}</b></h1>
+            <h5 class="line-height">{{ knowledge01.content }}</h5>
+          </div>
         </div>
-        <div class="col-md-6" v-bind:data-aos="knowledge02.animation1" :data-aos-easing="knowledge02.easing1" :data-aos-duration="knowledge02.duration1">
-          <img :src="knowledge02.image1" class="card-img-top" alt="...">
-        </div>
-        <div class="col-md-6" v-bind:data-aos="knowledge02.animation2" :data-aos-duration="knowledge02.duration2">
-          <!-- 知識02右側欄 -->
-          <div class="row mb-5" v-for="(item, index) in knowledge02.sidebar" :key="index">
-            <div class="col-md-6">
-              <img :src="item.image" class="card-img-top" alt="...">
-            </div>
-            <div class="col-md-6">
-              <h3><b>{{ item.title }}</b></h3>
-              <div class="d-flex align-items-center">
-                <img src="img/articleicon.png" alt="專題文章圖示">
-                <h5 class="mb-0 ms-2">專題文章</h5>
+        <!-- 知識02 -->
+        <div class="row row-cols-1 row-cols-md-2 mt-5">
+          <div class="col-md-12" v-bind:data-aos="knowledge02.animation1" :data-aos-easing="knowledge02.easing1" :data-aos-duration="knowledge02.duration1">
+            <img :src="knowledge02.titleImage" class="card-img-top img-fluid ktitle mb-5" alt="...">
+          </div>
+          <div class="col-md-6" v-bind:data-aos="knowledge02.animation1" :data-aos-easing="knowledge02.easing1" :data-aos-duration="knowledge02.duration1">
+            <img :src="knowledge02.image1" class="card-img-top" alt="...">
+          </div>
+          <div class="col-md-6" v-bind:data-aos="knowledge02.animation2" :data-aos-duration="knowledge02.duration2">
+            <!-- 知識02右側欄 -->
+            <div class="row mb-5" v-for="(item, index) in knowledge02.sidebar" :key="index">
+              <div class="col-md-6">
+                <img :src="item.image" class="card-img-top" alt="...">
+              </div>
+              <div class="col-md-6">
+                <h3><b>{{ item.title }}</b></h3>
+                <div class="d-flex align-items-center">
+                  <img src="img/articleicon.png" alt="專題文章圖示">
+                  <h5 class="mb-0 ms-2">專題文章</h5>
+                </div>
               </div>
             </div>
           </div>
         </div>
-      </div>
-    
-      <!-- 知識03 -->
-      <div class="row row-cols-1 row-cols-md-2 mt-5">
-        <div class="col-md-12" v-bind:data-aos="knowledge03.animation1" :data-aos-easing="knowledge03.easing1" :data-aos-duration="knowledge03.duration1">
-          <img :src="knowledge03.titleImage" class="card-img-top ktitle img-fluid mb-5" alt="...">
-        </div>
-        <div class="col-md-6" v-bind:data-aos="knowledge03.animation1" :data-aos-easing="knowledge03.easing1" :data-aos-duration="knowledge03.duration1">
-          <!-- 知識03左側欄 -->
-          <div class="row mb-5" v-for="(item, index) in knowledge03.sidebar" :key="index">
-            <div class="col-md-6">
-              <img :src="item.image" class="card-img-top" alt="...">
-            </div>
-            <div class="col-md-6">
-              <h3><b>{{ item.title }}</b></h3>
-              <div class="d-flex align-items-center">
-                <img src="img/articleicon.png" alt="專題文章圖示">
-                <h5 class="mb-0 ms-2">專題文章</h5>
+      
+        <!-- 知識03 -->
+        <div class="row row-cols-1 row-cols-md-2 mt-5">
+          <div class="col-md-12" v-bind:data-aos="knowledge03.animation1" :data-aos-easing="knowledge03.easing1" :data-aos-duration="knowledge03.duration1">
+            <img :src="knowledge03.titleImage" class="card-img-top ktitle img-fluid mb-5" alt="...">
+          </div>
+          <div class="col-md-6" v-bind:data-aos="knowledge03.animation1" :data-aos-easing="knowledge03.easing1" :data-aos-duration="knowledge03.duration1">
+            <!-- 知識03左側欄 -->
+            <div class="row mb-5" v-for="(item, index) in knowledge03.sidebar" :key="index">
+              <div class="col-md-6">
+                <img :src="item.image" class="card-img-top" alt="...">
+              </div>
+              <div class="col-md-6">
+                <h3><b>{{ item.title }}</b></h3>
+                <div class="d-flex align-items-center">
+                  <img src="img/articleicon.png" alt="專題文章圖示">
+                  <h5 class="mb-0 ms-2">專題文章</h5>
+                </div>
               </div>
             </div>
           </div>
+          <div class="col-md-6" v-bind:data-aos="knowledge03.animation2" :data-aos-duration="knowledge03.duration2">
+            <img :src="knowledge03.image" class="card-img-top" alt="...">
+          </div>
         </div>
-        <div class="col-md-6" v-bind:data-aos="knowledge03.animation2" :data-aos-duration="knowledge03.duration2">
-          <img :src="knowledge03.image" class="card-img-top" alt="...">
-        </div>
-      </div>
-    </template>
-
-
-
-
-
+      </template>
       <!-- 毛孩保健知識 -->
       <h1 class="mt-5 mb-5"><b>專為全天下毛小孩的爸媽發表知識文章</b></h1>
-      <hr>
+      <hr />
       <div class="row" data-aos="fade-up">
         <div class="col-md-6 col-lg-4 mb-3 mt-2" v-for="(item, index) in knowledgeSections">
           <div class="card border-0 p-2 mb-1 bg-body rounded">
@@ -131,94 +121,76 @@
           </div>
         </div>
       </div>
-      
-
-
-
-
-
-    
-
-  
       <div class="text-center mt-4" v-if="showMoreButton">
         <button class="btn btn-dark btn-lg rounded-pill custom-btn" @click="showMore">展示更多</button>
       </div>
-      
-  </div>
-
-
-
-
-
-
-  <!-- 我的頁尾開始 -->
-  <template>
-    <Footer>
-      <div class="b-example-divider"></div>
-      <div class="mt-5 p-4 text-white text-center " style="background-image: url('img/footer.png');" data-bs-theme="dark">
-        <div class="container  mt-5">
-          <footer class="py-5 mt-5">
-            <div class="row  mt-5 ">
-              <div class="col-6  mb-3">
-                <ul class="nav flex-column">
-                  <li class="nav-item mb-2 text-start">
-                    <h5><b>聯絡我們</b></h5>
-                  </li>
-                  <br>
-                  <li class="nav-item mb-2 text-start">
-                    <h6>營業時間｜{{ businessHours }}</h6>
-                  </li>
-                  <li class="nav-item mb-2 text-start">
-                    <h6>地址｜{{ address }}</h6>
-                  </li>
-                  <li class="nav-item mb-2 text-start">
-                    <h6>客服信箱｜{{ email }}</h6>
-                  </li>
-                  <li class="nav-item mb-2 text-start">
-                    <h6>客服電話｜{{ phone }}</h6>
-                  </li>
-                </ul>
+    </div>
+    <!-- 我的頁尾開始 -->
+    <template>
+      <Footer>
+        <div class="b-example-divider"></div>
+        <div class="mt-5 p-4 text-white text-center " style="background-image: url('img/footer.png');" data-bs-theme="dark">
+          <div class="container  mt-5">
+            <footer class="py-5 mt-5">
+              <div class="row  mt-5 ">
+                <div class="col-6  mb-3">
+                  <ul class="nav flex-column">
+                    <li class="nav-item mb-2 text-start">
+                      <h5><b>聯絡我們</b></h5>
+                    </li>
+                    <br>
+                    <li class="nav-item mb-2 text-start">
+                      <h6>營業時間｜{{ businessHours }}</h6>
+                    </li>
+                    <li class="nav-item mb-2 text-start">
+                      <h6>地址｜{{ address }}</h6>
+                    </li>
+                    <li class="nav-item mb-2 text-start">
+                      <h6>客服信箱｜{{ email }}</h6>
+                    </li>
+                    <li class="nav-item mb-2 text-start">
+                      <h6>客服電話｜{{ phone }}</h6>
+                    </li>
+                  </ul>
+                </div>
+                <div class="col-md-6 ">
+                  <form>
+                    <div class="text-start">
+                      <h5><b>訂閱電子報</b></h5>
+                    </div>
+                    <div class="input-group mb-3">
+                      <label class="visually-hidden">訂閱電子報信箱</label>
+                      <input type="text" class="form-control rounded-start" placeholder="訂閱電子報信箱"
+                        aria-label="Recipient's username" aria-describedby="button-addon2">
+                      <button class="btn btn-outline-light " type="button" id="button-addon2">訂閱</button>
+                    </div>
+                    <div>
+                      <ul class="list-unstyled d-flex">
+                        <li class="ms-0"><img src="img/JCB.png" class="img-fluid img-thumbnail" alt="..."></a></li>
+                        <li class="ms-0"><img src="img/VISA.png" class="img-fluid img-thumbnail" alt="..."></a></li>
+                        <li class="ms-0"><img src="img/MasterCard.png" class="img-fluid img-thumbnail" alt="..."></a></li>
+                      </ul>
+                    </div>
+                  </form>
+                </div>
               </div>
-              <div class="col-md-6 ">
-                <form>
-                  <div class="text-start">
-                    <h5><b>訂閱電子報</b></h5>
-                  </div>
-                  <div class="input-group mb-3">
-                    <label for="newsletter1" class="visually-hidden">訂閱電子報信箱</label>
-                    <input type="text" class="form-control rounded-start" placeholder="訂閱電子報信箱"
-                      aria-label="Recipient's username" aria-describedby="button-addon2">
-                    <button class="btn btn-outline-light " type="button" id="button-addon2">訂閱</button>
-                  </div>
-                  <div>
-                    <ul class="list-unstyled d-flex">
-                      <li class="ms-0"><img src="img/JCB.png" class="img-fluid img-thumbnail" alt="..."></a></li>
-                      <li class="ms-0"><img src="img/VISA.png" class="img-fluid img-thumbnail" alt="..."></a></li>
-                      <li class="ms-0"><img src="img/MasterCard.png" class="img-fluid img-thumbnail" alt="..."></a></li>
-                    </ul>
-                  </div>
-                </form>
+              <div class="d-flex flex-column flex-sm-row justify-content-between py-4 my-4 border-top">
+                <p>&copy; {{ currentYear }} 阿米拉工作室股份有限公司</p>
               </div>
-            </div>
-            <div class="d-flex flex-column flex-sm-row justify-content-between py-4 my-4 border-top">
-              <p>&copy; {{ currentYear }} 阿米拉工作室股份有限公司</p>
-            </div>
-          </footer>
+            </footer>
+          </div>
         </div>
-      </div>
-    </Footer>
-  </template>
-    <!-- 我的頁尾結束 -->
+      </Footer>
+    </template>
+      <!-- 我的頁尾結束 -->
   </div>
 
   <script>
-  
-    // 建立 Vue 實例並設置選項
     new Vue({
-      el: '#app', // 指定 Vue 實例控制的元素
+      el: '#app',
       data() {
         return {
-          PromotionalMessage: '歡慶阿米拉品牌月！全館 $599 享免運！', // 定義數據
+          PromotionalMessage: '歡慶阿米拉品牌月！全館 $599 享免運！',
           knowledgeSections: [],
           displayedKnowledge: [],
           startIndex: 1,
@@ -278,7 +250,6 @@
       
       mounted() {
         this.fetchKnowledge();
-        
         this.$nextTick(() => {
           AOS.init({
             offset: 100,
@@ -289,118 +260,82 @@
           });
           AOS.refresh();
         });
-
-        // 選擇所有具有 "hover" 類別的元素，並為它們添加滑鼠離開事件監聽器
-        document.querySelectorAll(".hover").forEach(element => {
-          element.addEventListener('mouseleave', () => {
-            element.classList.remove("hover");
-          });
-        });
-
-        // 在 Vue 實例掛載後執行的代碼
-        this.handleScroll(); // 呼叫 handleScroll 方法，初始化滾動事件處理程序
+        this.handleScroll();
       },
 
       methods: {
-        navigateTo(url) {
-            window.location.href = url;
-        },
-        
         fetchKnowledge() {
-    fetch('json/knowledge.json')
-      .then(response => {
-        if (!response.ok) {
-          throw new Error('網絡響應失敗');
-        }
-        return response.json();
-      })
-      .then(data => {
-        // 只保留前九筆資料並存儲在 knowledgeSections 中
-        this.knowledgeSections = data.slice(0, 9);
-        // 存儲所有資料在 displayedKnowledge 中
-        this.displayedKnowledge = data;
-        this.startIndex = 0; // 將 startIndex 設置為 0
-        this.endIndex = this.batchSize - 1; // 將 endIndex 設置為 batchSize - 1
-        
-      })
-      .catch(error => {
-        console.error('獲取知識時出錯:', error);
-      });
-},
+          fetch('json/knowledge.json')
+          .then(response => {
+            if (!response.ok) {
+              throw new Error('網絡響應失敗');
+            }
+            return response.json();
+          })
+          .then(data => {
+            // 只保留前九筆資料並存儲在 knowledgeSections 中
+            this.knowledgeSections = data.slice(0, 9);
+            // 存儲所有資料在 displayedKnowledge 中
+            this.displayedKnowledge = data;
+            this.startIndex = 0;
+            this.endIndex = this.batchSize - 1;
+            
+          })
+          .catch(error => {
+            console.error('獲取知識時出錯:', error);
+          });
+        },
 
 
-showMore() {
-    // 如果已經沒有更多資料，直接返回，不做任何操作
-    if (!this.showMoreButton) {
-        return;
-    }
-
-    this.startIndex += this.batchSize;
-    this.endIndex += this.batchSize;
-    const newData = this.displayedKnowledge.slice(this.startIndex, this.endIndex + 1);
-
-    // 如果後面還有資料，則將新資料添加到 displayedKnowledge 中
-    if (newData.length > 0) {
-        this.knowledgeSections = this.knowledgeSections.concat(newData);
-    } 
-
-    // 如果已經到達最後一筆資料，立即關閉按鈕
-    if (this.endIndex >= this.displayedKnowledge.length - 1) {
-        this.showMoreButton = false;
-    }
-},
-
-
-
-
-
-
-
-
-    
+        showMore() {
+          // 如果已經沒有更多資料，直接返回
+          if (!this.showMoreButton) {
+              return;
+          }
+          this.startIndex += this.batchSize;
+          this.endIndex += this.batchSize;
+          const newData = this.displayedKnowledge.slice(this.startIndex, this.endIndex + 1);
+          // 如果後面還有資料，則將新資料添加到 displayedKnowledge 中
+          if (newData.length > 0) {
+              this.knowledgeSections = this.knowledgeSections.concat(newData);
+          } 
+          // 如果已經到達最後一筆資料，立即關閉按鈕
+          if (this.endIndex >= this.displayedKnowledge.length - 1) {
+              this.showMoreButton = false;
+          }
+        },
         handleScroll() {
           // 滾動事件處理程序
-          let prevScrollpos = window.pageYOffset; // 儲存先前的捲動位置
-          let backToTopBtn = document.getElementById("backToTopBtn"); // 獲取回到頂部按鈕元素
-  
+          let prevScrollpos = window.pageYOffset;
+          let backToTopBtn = document.getElementById("backToTopBtn");
           window.addEventListener("scroll", () => {
-            // 監聽滾動事件
-            let currentScrollPos = window.pageYOffset; // 當前捲動位置
-  
+            let currentScrollPos = window.pageYOffset;
             if ((currentScrollPos > 100 && currentScrollPos !== 0) && prevScrollpos > currentScrollPos) {
               // 判斷是否顯示回到頂部按鈕
-              backToTopBtn.style.opacity = "1"; // 顯示按鈕
+              backToTopBtn.style.opacity = "1";
             } else {
-              backToTopBtn.style.opacity = "0"; // 隱藏按鈕
+              backToTopBtn.style.opacity = "0";
             }
-  
-            prevScrollpos = currentScrollPos; // 更新先前捲動位置
+            prevScrollpos = currentScrollPos;
           });
-  
           backToTopBtn.addEventListener("click", () => {
-            // 監聽回到頂部按鈕的點擊事件
-            this.scrollToTop(); // 呼叫 scrollToTop 方法，實現滾動到頂部的功能
+            this.scrollToTop();
           });
         },
         scrollToTop() {
-          // 捲動到頂部的方法
           window.scrollTo({
             top: 0,
-            behavior: "smooth" // 使用平滑滾動效果
+            behavior: "smooth"
           });
         },
       }  
     });
   </script>
   <script>
-    // 獲取 Vue 組件的容器元素
     const navigationElement = document.getElementById('navigation');
-  
-    // 創建 Vue 實例並掛載到容器元素上
     new Vue({
       render: h => h(NavigationBar)
     }).$mount(navigationElement);
   </script>
 </body>
-
 </html>

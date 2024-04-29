@@ -1,0 +1,52 @@
+[
+  {
+    "cartId": 1,
+    "userId": 2,
+    "userEmail": "Amila@gmail.com",
+    "items": [
+      {
+        "title": "Plus+機能保健系列 泌尿道紓壓保健",
+        "price": 450,
+        "quantity": 1,
+        "totalAmount": 450
+      },
+      {
+        "title": "心臟專科保健粉",
+        "price": 720,
+        "quantity": 1,
+        "totalAmount": 720
+      },
+      {
+        "title": "Plus+機能保健系列 優腎君腎臟保健",
+        "price": 730,
+        "quantity": 1,
+        "totalAmount": 730
+      },
+      {
+        "title": "Plus+功能型機能粉 腸道保健",
+        "price": 699,
+        "quantity": 2,
+        "totalAmount": 1398
+      },
+      {
+        "title": "寵物腸胃益生菌",
+        "price": 650,
+        "quantity": 2,
+        "totalAmount": 1300
+      }
+    ],
+    "userFormData": {
+      "firstName": "Amila",
+      "phone": "0966351800",
+      "address": "臺中市南屯區公益路二段51號",
+      "country": "台灣",
+      "state": "台中",
+      "zip": "408"
+    },
+    "paymentMethod": "paypal",
+    "orderDate": "2024-04-29",
+    "orderTime": "15:49",
+    "totalQuantity": 7,
+    "totalPrice": 4598
+  }
+]

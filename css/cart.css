@@ -1,4 +1,16 @@
 .container {
-    max-width: 960px;
-  }
-  
+  max-width: 960px;
+}
+#SuccessAlert {
+  color: #FFFFFF;
+  position: fixed;
+  font-weight: bolder;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: #000000c2;
+  padding: 20px;
+  z-index: 9999;
+  border-radius: 20px;
+  font-size: 20px;
+}

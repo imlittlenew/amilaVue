@@ -8,34 +8,27 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <link href="css/mycss.css" rel="stylesheet">
-    <link href="css/aos.css" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/vue@2"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="js/NavigationBar.js"></script>
-    <script src="js/aos.js"></script>
-    <script src="js/myjs.js"></script>
     <script src="js/bootstrap.bundle.min.js"></script>
   </head>
-
 <body>
-    <div id="app">
-        <button @click="scrollToTop" id="backToTopBtn" title="回到頂部"></button>
-  <!-- 優惠訊息 -->
-  <nav class="navbar navbar-expand-lg bg-body-tertiary p-2" data-bs-theme="dark">
-    <div class="container text-center">
-      <div class="row mx-auto">
-        <div class="col-12 ">
-          <span class="navbar-brand mb-0 fs-6 text-light"><b>{{PromotionalMessage}}</b></span>
-
+  <div id="app">
+    <button @click="scrollToTop" id="backToTopBtn" title="回到頂部"></button>
+    <!-- 優惠訊息 -->
+    <nav class="navbar navbar-expand-lg bg-body-tertiary p-2" data-bs-theme="dark">
+      <div class="container text-center">
+        <div class="row mx-auto">
+          <div class="col-12 ">
+            <span class="navbar-brand mb-0 fs-6 text-light"><b>{{PromotionalMessage}}</b></span>
+          </div>
         </div>
       </div>
-      <!-- Content here -->
-    </div>
-  </nav>
-  <!-- 導覽列 -->
-  <div id="navigation"></div>
+    </nav>
+    <!-- 導覽列 -->
+    <div id="navigation"></div>
 
-    <!-- Breadcrumb -->
     <template>
         <div class="container mt-5">
           <div class="row">
@@ -58,118 +51,111 @@
             </div>
           </div>
         </div>
-      </template>
+    </template>
+
     <div class="alert cart-message" role="alert" v-show="showCartMessage">
         <img src="img/bigcart.png" class="d-block img-fluid mx-auto" alt="cart">
         商品已成功加入購物車！
     </div>
+
     <div class="container">
         <!-- 品牌清單 -->
         <div class="row">
           <div class="col-md-3">
-
-                  <div class="list-group list-group-flush">
-                      <!-- 使用 Vue 的 v-bind:href 指令設置 href 屬性 -->
-                      <a v-bind:href="'moreson.html'" class="list-group-item list-group-item-action text-start">木入森</a>
-                      <a v-bind:href="'petstimes.html'" class="list-group-item list-group-item-action text-start">毛孩時代</a>
-                      <a v-bind:href="'dogcatstar.html'" class="list-group-item list-group-item-action text-start">汪喵星球</a>
-                      <a v-bind:href="'nu4pet.html'" class="list-group-item list-group-item-action text-start">陪心寵糧</a>
-                      <a v-bind:href="'natural10.html'" class="list-group-item list-group-item-action text-start">自然食</a>
-                      <a v-bind:href="'francodex.html'" class="list-group-item list-group-item-action text-start">法國法點</a>
-                  </div>
-                  <div class="list-group list-group-flush">
-                      <a class="list-group-item list-group-item-action text-start" data-bs-toggle="collapse"
-                          href="#multiCollapseExample1" role="button" aria-expanded="false"
-                          aria-controls="multiCollapseExample1">更多分類</a>
-                      <div class="collapse multi-collapse" id="multiCollapseExample1">
-                          <div class="card card-body no-border02">
-                              <a v-bind:href="'bonesAndMood.html'" class="list-group-item list-group-item-action text-start">關節和情緒保健</a>
-                              <a v-bind:href="'bodyErelated.html'" class="list-group-item list-group-item-action text-start">身體的相關保健</a>
-                              <a v-bind:href="'eyesAndSkin.html'" class="list-group-item list-group-item-action text-start">眼睛和皮膚保健</a>
-                          </div>
+              <div class="list-group list-group-flush">
+                  <a v-bind:href="'moreson.html'" class="list-group-item list-group-item-action text-start">木入森</a>
+                  <a v-bind:href="'petstimes.html'" class="list-group-item list-group-item-action text-start">毛孩時代</a>
+                  <a v-bind:href="'dogcatstar.html'" class="list-group-item list-group-item-action text-start">汪喵星球</a>
+                  <a v-bind:href="'nu4pet.html'" class="list-group-item list-group-item-action text-start">陪心寵糧</a>
+                  <a v-bind:href="'natural10.html'" class="list-group-item list-group-item-action text-start">自然食</a>
+                  <a v-bind:href="'francodex.html'" class="list-group-item list-group-item-action text-start">法國法點</a>
+              </div>
+              <div class="list-group list-group-flush">
+                  <a class="list-group-item list-group-item-action text-start" data-bs-toggle="collapse"
+                      href="#multiCollapseExample1" role="button" aria-expanded="false"
+                      aria-controls="multiCollapseExample1">更多分類</a>
+                  <div class="collapse multi-collapse" id="multiCollapseExample1">
+                      <div class="card card-body no-border02">
+                          <a v-bind:href="'bonesAndMood.html'" class="list-group-item list-group-item-action text-start">關節和情緒保健</a>
+                          <a v-bind:href="'bodyErelated.html'" class="list-group-item list-group-item-action text-start">身體的相關保健</a>
+                          <a v-bind:href="'eyesAndSkin.html'" class="list-group-item list-group-item-action text-start">眼睛和皮膚保健</a>
                       </div>
                   </div>
               </div>
-          
-          
-
-            <div class="col-md-9">
-                <!-- 所有品牌商品 -->
-                <template>
-                    <div class="row row-cols-1 row-cols-md-3 g-3">
-                      <div v-for="(item, index) in products" :key="index" class="col">
-                        <div class="card h-100 border-0 shadow-sm p-2 mb-1 bg-body rounded">
-                          <img :src="item.image" class="card-img-top" :alt="item.name">
-                          <div class="card-body d-flex flex-column">
-                            <div class="flex-grow-1">
-                              <p class="card-title" style="color: gray;">{{ item.name }}</p>
-                              <p class="card-text"><b>NT$ {{ item.price }}</b></p>
-                            </div>
-                            <button type="button" class="btn btn-outline-dark mt-auto" data-bs-toggle="modal"
-                                    :data-bs-target="'#exampleModal_' + item.product_id" @click="checkLoginAndAddToCart">
-                              立即購買
-                            </button>
-                            <div class="modal fade" :id="'exampleModal_' + item.product_id" tabindex="-1"
-                                 aria-labelledby="exampleModalLabel" aria-hidden="true">
-                              <div class="modal-dialog modal-dialog-centered">
-                                <div class="modal-content">
-                                  <div class="modal-body">
-                                    <div class="container-fluid">
-                                      <div class="row">
-                                        <div class="col-md-6">
-                                          <img :src="item.image" class="img-fluid" />
+            </div>
+          <div class="col-md-9">
+            <!-- 所有商品 -->
+            <template>
+                <div class="row row-cols-1 row-cols-md-3 g-3">
+                  <div v-for="(item, index) in products" :key="index" class="col">
+                    <div class="card h-100 border-0 shadow-sm p-2 mb-1 bg-body rounded">
+                      <img :src="item.image" class="card-img-top" :alt="item.name">
+                      <div class="card-body d-flex flex-column">
+                        <div class="flex-grow-1">
+                          <p class="card-title" style="color: gray;">{{ item.name }}</p>
+                          <p class="card-text"><b>NT$ {{ item.price }}</b></p>
+                        </div>
+                        <button type="button" class="btn btn-outline-dark mt-auto" data-bs-toggle="modal"
+                                :data-bs-target="'#exampleModal_' + item.product_id" @click="checkLogin()">
+                          立即購買
+                        </button>
+                        <div class="modal fade" :id="'exampleModal_' + item.product_id" tabindex="-1"
+                            aria-labelledby="exampleModalLabel" aria-hidden="true">
+                          <div class="modal-dialog modal-dialog-centered">
+                            <div class="modal-content">
+                              <div class="modal-body">
+                                <div class="container-fluid">
+                                  <div class="row">
+                                    <div class="col-md-6">
+                                      <img :src="item.image" class="img-fluid" />
+                                    </div>
+                                    <div class="col-md-6 ms-auto">
+                                      <div class="row mt-2">
+                                        <div class="col-12 fs-5 fw-bold ">{{ item.name }}</div>
+                                        <div class="col-12 mb-4 fs-5 fw-bold mt-3">NT$ {{ item.price }}</div>
+                                      </div>
+                                    </div>
+                                    <div class="row">
+                                      <div class="col-6 mt-4">
+                                        <div class="col-12 .fs-6 badge bg-secondary text-wrap ">
+                                          全館滿$599免運
                                         </div>
-                                        <div class="col-md-6 ms-auto">
-                                          <div class="row mt-2">
-                                            <div class="col-12 fs-5 fw-bold ">{{ item.name }}</div>
-                                            <div class="col-12 mb-4 fs-5 fw-bold mt-3">NT$ {{ item.price }}</div>
-                                          </div>
-                                        </div>
-                                        <div class="row">
-                                          <div class="col-6 mt-4">
-                                            <div class="col-12 .fs-6 badge bg-secondary text-wrap ">
-                                              全館滿$599免運
+                                      </div>
+                                      <div class="col-6">
+                                        <div class="col">
+                                          <label class="me-2 text-secondary fs-6">購買數量</label>
+                                          <form class="d-flex align-items-center" @submit.prevent="addToCart(item)">
+                                            <div class="d-flex align-items-center">
+                                              <button type="button" @click="decreaseQuantity(item)"
+                                                      class="me-2 btn btn-outline-dark">-</button>
+                                              <input :id="'quantity' + item.product_id" :name="'quantity' + item.product_id"
+                                                    min="1" :value="item.quantity" class="form-control">
+                                              <button type="button" @click="increaseQuantity(item)"
+                                                      class="ms-2 btn btn-outline-dark">+</button>
                                             </div>
-                                          </div>
-                                          <div class="col-6">
-                                            <div class="col">
-                                              <label for="quantity" class="me-2 text-secondary fs-6">購買數量</label>
-                                              <form class="d-flex align-items-center" @submit.prevent="addToCart(item)">
-                                                <div class="d-flex align-items-center">
-                                                  <button type="button" @click="decreaseQuantity(item)"
-                                                          class="me-2 btn btn-outline-dark">-</button>
-                                                  <input :id="'quantity' + item.product_id" :name="'quantity' + item.product_id"
-                                                         min="1" :value="item.quantity" class="form-control">
-                                                  <button type="button" @click="increaseQuantity(item)"
-                                                          class="ms-2 btn btn-outline-dark">+</button>
-                                                </div>
-                                              </form>
-                                            </div>
-                                          </div>
+                                          </form>
                                         </div>
                                       </div>
                                     </div>
                                   </div>
-                                  <div class="modal-footer">
-                                    <button type="button" class="btn btn-outline-secondary"
-                                            data-bs-dismiss="modal">取消</button>
-                                    <button type="button" class="btn btn-dark" @click="addToCart(item)">加入購物車</button>
-                                  </div>
                                 </div>
+                              </div>
+                              <div class="modal-footer">
+                                <button type="button" class="btn btn-outline-secondary"
+                                        data-bs-dismiss="modal">取消</button>
+                                <button type="button" class="btn btn-dark" @click="addToCart(item)">加入購物車</button>
                               </div>
                             </div>
                           </div>
                         </div>
                       </div>
                     </div>
-                  </template>
-                  
-
-            </div>
+                  </div>
+                </div>
+            </template>
+          </div>
         </div>
     </div>
-
-
     <!-- 我的頁尾開始 -->
     <template>
         <Footer>
@@ -204,7 +190,7 @@
                         <h5><b>訂閱電子報</b></h5>
                       </div>
                       <div class="input-group mb-3">
-                        <label for="newsletter1" class="visually-hidden">訂閱電子報信箱</label>
+                        <label class="visually-hidden">訂閱電子報信箱</label>
                         <input type="text" class="form-control rounded-start" placeholder="訂閱電子報信箱"
                           aria-label="Recipient's username" aria-describedby="button-addon2">
                         <button class="btn btn-outline-light " type="button" id="button-addon2">訂閱</button>
@@ -226,217 +212,162 @@
             </div>
           </div>
         </Footer>
-      </template>
-    </div>    
-        <script>
-  
-            // 建立 Vue 實例並設置選項
-            new Vue({
-              el: '#app', // 指定 Vue 實例控制的元素
-              data() {
-                return {
-                  PromotionalMessage: '歡慶阿米拉品牌月！全館 $599 享免運！', // 定義數據
-                  showCartMessage: false,
-                  selectedSort: 'lowToHigh',
-                  products: [],
-                  businessHours: "周一至周五 09：00 - 16：30",
-                  address: "臺中市南屯區公益路二段51號(國泰公益大樓)",
-                  email: "amila@gmail.com",
-                  phone: "(04)2242-1717 #263",
-                  currentYear: new Date().getFullYear()
-                    };
-                  },
-              
-              mounted() {
-                this.fetchProducts();
-
-
-                // 選擇所有具有 "hover" 類別的元素，並為它們添加滑鼠離開事件監聽器
-                document.querySelectorAll(".hover").forEach(element => {
-                  element.addEventListener('mouseleave', () => {
-                    element.classList.remove("hover");
-                  });
-                });
+    </template>
+  </div>    
+  <script>
+      new Vue({
+        el: '#app',
+        data() {
+          return {
+            PromotionalMessage: '歡慶阿米拉品牌月！全館 $599 享免運！',
+            showCartMessage: false,
+            selectedSort: 'lowToHigh',
+            products: [],
+            businessHours: "周一至周五 09：00 - 16：30",
+            address: "臺中市南屯區公益路二段51號(國泰公益大樓)",
+            email: "amila@gmail.com",
+            phone: "(04)2242-1717 #263",
+            currentYear: new Date().getFullYear()
+          };
+        },
         
-                // 在 Vue 實例掛載後執行的代碼
-                this.handleScroll(); // 呼叫 handleScroll 方法，初始化滾動事件處理程序
-        
-                // 使用原生 JavaScript 監聽點擊事件
-                const self = this; // 將 Vue 實例存儲在變數中以便在匿名函數中訪問
-                const addToCartButtons = document.querySelectorAll('.btn-outline-dark');
-                addToCartButtons.forEach((button) => {
-                  button.addEventListener('click', function(event) {
-                    const productId = this.getAttribute('data-product-id'); // 使用原生 JavaScript 獲取屬性值
-                    self.displayInModal(productId);
-                  });
-                });
-              },
-        
-              methods: {
-                checkLoginAndAddToCart() {
-                const isLoggedIn = localStorage.getItem('isLoggedIn');
-                if (isLoggedIn) {
-                  // 已經登入，可以將商品添加到購物車中
-                  addToCart();
-                } else {
-                  // 未登入，導向登入頁面
-                  window.location.href = '/user.html'; // 假設登入頁面的 URL 是 '/login'
+        mounted() {
+          this.fetchProducts();
+          this.handleScroll();
+        },
+        methods: {
+          // 在立即購買按鈕中檢查登錄狀態
+          checkLogin() {
+            const isLoggedIn = localStorage.getItem('isLoggedIn');
+            if (!isLoggedIn) {
+              window.location.href = 'user.html';
+            }
+          },
+          // 獲取商品資料
+          fetchProducts() {
+            fetch('json/allProduct.json')
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('網絡響應失敗');
                 }
-              },
-                navigateTo(url) {
-                    window.location.href = url;
-                },
-                fetchProducts() {
-                    fetch('json/allProduct.json') // 路徑根據你的項目結構和JSON文件位置而定
-                .then(response => {
-                    if (!response.ok) {
-                        throw new Error('網絡響應失敗');
-                    }
-                    return response.json();
-                })
-                .then(data => {
-                    this.products = data;
-                })
-                .catch(error => {
-                    console.error('獲取產品時出錯:', error);
-                });
-            },
-            
-                handleScroll() {
-                  // 滾動事件處理程序
-                  let prevScrollpos = window.pageYOffset; // 儲存先前的捲動位置
-                  let backToTopBtn = document.getElementById("backToTopBtn"); // 獲取回到頂部按鈕元素
-          
-                  window.addEventListener("scroll", () => {
-                    // 監聽滾動事件
-                    let currentScrollPos = window.pageYOffset; // 當前捲動位置
-          
-                    if ((currentScrollPos > 100 && currentScrollPos !== 0) && prevScrollpos > currentScrollPos) {
-                      // 判斷是否顯示回到頂部按鈕
-                      backToTopBtn.style.opacity = "1"; // 顯示按鈕
-                    } else {
-                      backToTopBtn.style.opacity = "0"; // 隱藏按鈕
-                    }
-          
-                    prevScrollpos = currentScrollPos; // 更新先前捲動位置
-                  });
-          
-                  backToTopBtn.addEventListener("click", () => {
-                    // 監聽回到頂部按鈕的點擊事件
-                    this.scrollToTop(); // 呼叫 scrollToTop 方法，實現滾動到頂部的功能
-                  });
-                },
-                scrollToTop() {
-                  // 捲動到頂部的方法
-                  window.scrollTo({
-                    top: 0,
-                    behavior: "smooth" // 使用平滑滾動效果
-                  });
-                },
-                displayInModal(productId, productList) {
-                // 將 productId 轉換為數字形式
-                const productIdNumber = parseInt(productId);
-                // 根據產品 ID 尋找對應的產品資料
-                const item = productList.find(product => product.product_id === productIdNumber);
-                // 確認找到了對應的產品
-                
-                if (item) {
-                  // 更新模態視窗中的圖片、標題和價格
-                  alert(JSON.stringify(item))
-                  this.modalItem = item;
-                  
-                } 
-              },
-                increaseQuantity(item) {
-                  item.quantity = item.quantity ? item.quantity + 1 : 1;
-                },
-        
-                decreaseQuantity(item) {
-                  if (item.quantity && item.quantity > 1) {
-                    item.quantity--;
-                  }
-                },
-                getQuantity(item) {
-                  return item.quantity || 1;
-                },
-        
-                addToCart(item) {
-                  // 將商品加入購物車的操作
-                  const modalTitle = item.name;
-                  const modalPrice = item.price;
-                  const quantity = item.quantity;
-                  const cartItems = JSON.parse(localStorage.getItem('cartItems')) || [];
-                  cartItems.push({
-                    title: modalTitle,
-                    price: modalPrice,
-                    quantity: quantity
-                  });
-                  // const sum = quantity * modalPrice
-                  // const message = `已成功將 ${item.name} 加入購物車，價格為 ${item.price}*${item.quantity}=${sum}`;
-                  // alert(JSON.stringify(cartItems));
-                  // 顯示加入購物車訊息
-                  localStorage.setItem('cartItems', JSON.stringify(cartItems));
-                  this.updateCartItemCount('.cart-badge-form');
-                  this.updateCartItemCount('.cart-badge-nav');
-                  this.showCartMessage = true;
-                  
-                  // 一段時間後隱藏訊息（例如：1秒後）
-                  setTimeout(() => {
-                    this.showCartMessage = false;
-                    const modalId = '#exampleModal_' + item.product_id;
-                    $(modalId).modal('hide');
-                  }, 1000);
-                },
-                updateCartItemCount(selector) {
-                    const cartItems = JSON.parse(localStorage.getItem('cartItems')) || [];
-                    let totalQuantity = 0;
-                
-                    cartItems.forEach(function (cartItem) {
-                    totalQuantity += parseInt(cartItem.quantity);
-                    });
-                
-                    const badgeElement = document.querySelector(selector);
-                    if (badgeElement) {
-                    badgeElement.textContent = totalQuantity;
-                    }
-                },
-                sortProducts() {
-                switch (this.selectedSort) {
-                    case "lowToHigh":
-                    this.sortProductsByPriceLowToHigh();
-                    break;
-                    case "highToLow":
-                    this.sortProductsByPriceHighToLow();
-                    break;
-                }
-                },
-                sortProductsByPriceLowToHigh() {
-                this.products.sort((a, b) => {
-                    const priceA = parseFloat(a.price);
-                    const priceB = parseFloat(b.price);
-                    return priceA - priceB;
-                });
-                },
-                sortProductsByPriceHighToLow() {
-                this.products.sort((a, b) => {
-                    const priceA = parseFloat(a.price);
-                    const priceB = parseFloat(b.price);
-                    return priceB - priceA;
-                });
-                }
-              }  
+                return response.json();
+            })
+            .then(data => {
+                this.products = data;
+            })
+            .catch(error => {
+                console.error('獲取產品時出錯:', error);
             });
-          </script>
-          <script>
-            // 獲取 Vue 組件的容器元素
-            const navigationElement = document.getElementById('navigation');
+          },
+          // 瀏覽器卷軸滾動處理函式
+          handleScroll() {
+            let prevScrollpos = window.pageYOffset;
+            let backToTopBtn = document.getElementById("backToTopBtn");
+            window.addEventListener("scroll", () => {
+              let currentScrollPos = window.pageYOffset;
+              if ((currentScrollPos > 100 && currentScrollPos !== 0) && prevScrollpos > currentScrollPos) {
+                backToTopBtn.style.opacity = "1";
+              } else {
+                backToTopBtn.style.opacity = "0";
+              }
+              prevScrollpos = currentScrollPos;
+            });
+            backToTopBtn.addEventListener("click", () => {
+              this.scrollToTop();
+            });
+          },
+          // 滾動至頁面頂部
+          scrollToTop() {
+            window.scrollTo({
+              top: 0,
+              behavior: "smooth"
+            });
+          },
+          // 增加商品數量
+          increaseQuantity(item) {
+            item.quantity = item.quantity ? item.quantity + 1 : 1;
+          },
+          // 減少商品數量
+          decreaseQuantity(item) {
+            if (item.quantity && item.quantity > 1) {
+              item.quantity--;
+            }
+          },
+          // 獲取商品數量
+          getQuantity(item) {
+            return item.quantity || 1;
+          },
+          // 將商品添加至購物車
+          addToCart(item) {
+            const modalTitle = item.name;
+            const modalPrice = item.price;
+            const quantity = item.quantity;
+            const cartItems = JSON.parse(localStorage.getItem('cartItems')) || [];
+            cartItems.push({
+              title: modalTitle,
+              price: modalPrice,
+              quantity: quantity
+            });
+            localStorage.setItem('cartItems', JSON.stringify(cartItems));
+            this.updateCartItemCount('.cart-badge-form');
+            this.updateCartItemCount('.cart-badge-nav');
+            this.showCartMessage = true;
+            setTimeout(() => {
+              this.showCartMessage = false;
+              const modalId = '#exampleModal_' + item.product_id;
+              $(modalId).modal('hide');
+            }, 1000);
+          },
+          // 更新購物車商品數量
+          updateCartItemCount(selector) {
+              const cartItems = JSON.parse(localStorage.getItem('cartItems')) || [];
+              let totalQuantity = 0;
           
-            // 創建 Vue 實例並掛載到容器元素上
-            new Vue({
-              render: h => h(NavigationBar)
-            }).$mount(navigationElement);
-          </script>
-        
+              cartItems.forEach(function (cartItem) {
+              totalQuantity += parseInt(cartItem.quantity);
+              });
+          
+              const badgeElement = document.querySelector(selector);
+              if (badgeElement) {
+              badgeElement.textContent = totalQuantity;
+              }
+          },
+          // 排序商品
+          sortProducts() {
+          switch (this.selectedSort) {
+              case "lowToHigh":
+              this.sortProductsByPriceLowToHigh();
+              break;
+              case "highToLow":
+              this.sortProductsByPriceHighToLow();
+              break;
+          }
+          },
+          // 按價格低到高排序商品
+          sortProductsByPriceLowToHigh() {
+          this.products.sort((a, b) => {
+              const priceA = parseFloat(a.price);
+              const priceB = parseFloat(b.price);
+              return priceA - priceB;
+          });
+          },
+          // 按價格高到低排序商品
+          sortProductsByPriceHighToLow() {
+          this.products.sort((a, b) => {
+              const priceA = parseFloat(a.price);
+              const priceB = parseFloat(b.price);
+              return priceB - priceA;
+          });
+          }
+        }  
+      });
+  </script>
+  <script>
+    const navigationElement = document.getElementById('navigation');
+    new Vue({
+      render: h => h(NavigationBar)
+    }).$mount(navigationElement);
+  </script>
 </body>
 
 </html>

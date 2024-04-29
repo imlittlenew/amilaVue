@@ -1,5 +1,4 @@
 .form-signin .form-floating:focus-within {
-
     z-index: 2;
 }
 
@@ -16,17 +15,13 @@
     border-top-right-radius: 0;
 }
 
-/* 在非移动设备上，图像高度与表单高度相同，仅宽度改变 */
 @media (min-width: 768px) {
     .bg-img {
         width: 100%;
-        /* 调整以匹配表单最大宽度为 500px 以及 padding 20px 的总宽度 */
         height: 100%;
-        /* 与表单高度相同 */
         background-size: cover;
         background-repeat: no-repeat;
         background-position: right;
-        /* 图片右对齐 */
     }
 
     .form-signin {
@@ -35,18 +30,14 @@
     }
 }
 
-/* 在移动设备上，图像在上方，宽度改变，高度固定 */
 @media (max-width: 767px) {
     .bg-img {
         width: 100%;
         height: 200px;
-        /* 你可以调整固定的高度 */
         background-size: cover;
         background-repeat: no-repeat;
         background-position: top;
-        /* 图片上对齐 */
         margin-bottom: 20px;
-        /* 图片与表单之间的间距 */
     }
 
     .form-signin {
@@ -55,8 +46,6 @@
     }
 }
 
-/* 註冊/登入 */
-/* CSS */
 @keyframes slideIn {
     from {
         opacity: 0;
@@ -90,8 +79,6 @@
 }
 
 #SuccessAlert {
-    /* 自訂成功訊息的樣式 */
-    /* display: none; */
     color: #FFFFFF;
     position: fixed;
     font-weight: bolder;
@@ -101,7 +88,6 @@
     background: #000000c2;
     padding: 20px;
     z-index: 9999;
-    /* border: 5px solid rgb(232, 20, 20); */
     border-radius: 20px;
     font-size: 20px;
 }
@@ -113,7 +99,7 @@
 }
 
 .toast {
-    border: 6px dashed #181b1e !important; /* 设置边框为黑色虚线，粗度为2 */
+    border: 6px dashed #181b1e !important;
 }
 
 #toggleRegister , #toggleforgot , #toggleLogin{
